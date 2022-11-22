@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 784: 'value' is not a keyword argument or valid child for the frame statement.
+    value Preference("music volume")
+         ^
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue Nov 22 22:11:20 2022
