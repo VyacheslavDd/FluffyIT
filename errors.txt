@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 784: 'value' is not a keyword argument or valid child for the frame statement.
-    value Preference("music volume")
-         ^
+File "game/screens.rpy", line 699: 'key' is not a keyword argument or valid child for the textbutton statement.
+    key "save_delete" action FileDelete("saves/19-3-LT1.save")
+       ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Tue Nov 22 22:11:20 2022
+Fri Nov 25 01:59:57 2022

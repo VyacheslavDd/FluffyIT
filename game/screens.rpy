@@ -30,7 +30,6 @@ style button:
 
 style button_text is gui_text:
     properties gui.text_properties("button")
-    yalign 0.5
 
 
 style label_text is gui_text:
@@ -228,7 +227,10 @@ style choice_button is default:
     properties gui.button_properties("choice_button")
 
 style choice_button_text is default:
-    properties gui.button_text_properties("choice_button")
+    size 30
+    xalign 0.5
+    color "#d909e6"
+    #properties gui.button_text_properties("choice_button")
 
 
 ## Экран быстрого меню #########################################################
@@ -237,26 +239,27 @@ style choice_button_text is default:
 ## внеигровым меню.
 
 screen quick_menu():
+    pass
 
     ## Гарантирует, что оно появляется поверх других экранов.
-    zorder 100
+    #zorder 100
 
-    if quick_menu:
+    #if quick_menu:
 
-        hbox:
-            style_prefix "quick"
+        #hbox:
+           # style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
+            #xalign 0.5
+            #yalign 1.0
 
-            textbutton _("Назад") action Rollback()
-            textbutton _("История") action ShowMenu('history')
-            textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Авто") action Preference("auto-forward", "toggle")
-            textbutton _("Сохранить") action ShowMenu('save')
-            textbutton _("Б.Сохр") action QuickSave()
-            textbutton _("Б.Загр") action QuickLoad()
-            textbutton _("Опции") action ShowMenu('preferences')
+            #textbutton _("Назад") action Rollback()
+            #textbutton _("История") action ShowMenu('history')
+            #textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
+            #textbutton _("Авто") action Preference("auto-forward", "toggle")
+            #textbutton _("Сохранить") action ShowMenu('save')
+            #textbutton _("Б.Сохр") action QuickSave()
+            #textbutton _("Б.Загр") action QuickLoad()
+            #textbutton _("Опции") action ShowMenu('preferences')
 
 
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
@@ -286,7 +289,13 @@ style quick_button_text:
 ## другим меню и к началу игры.
 
 screen navigation():
-
+        #frame:
+            #xalign 0.07
+            #yalign 0.9
+            #background None
+            #imagebutton:
+                #idle "gui/button/back_button.png"
+                #action Return()
     vbox:
         style_prefix "navigation"
         xpos gui.navigation_xpos
@@ -294,26 +303,26 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        if main_menu:
+        #if main_menu:
 
-            textbutton _("Играть") action Start()
-        else:
+            #textbutton _("Играть") action Start()
+        #else:
 
-            textbutton _("История") action ShowMenu("history")
+            #textbutton _("История") action ShowMenu("history")
 
-            textbutton _("Сохранения") action ShowMenu("save")
+           # textbutton _("Сохранения") action ShowMenu("save")
 
-        textbutton _("Загрузить") action ShowMenu("load")
+       # textbutton _("Загрузить") action ShowMenu("load")
 
         #textbutton _("Настройки") action ShowMenu("preferences")
 
-        if _in_replay:
+        #if _in_replay:
 
-            textbutton _("Завершить повтор") action EndReplay(confirm=True)
+           # textbutton _("Завершить повтор") action EndReplay(confirm=True)
 
-        elif not main_menu:
+        #elif not main_menu:
 
-            textbutton _("Главное меню") action MainMenu()
+            #textbutton _("Главное меню") action MainMenu()
 
         ##textbutton _("Об игре") action ShowMenu("about")
 
@@ -326,7 +335,12 @@ screen navigation():
 
             ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
             ## версии.
-            textbutton _("Выйти") action Quit(confirm=not main_menu)
+            button:
+                text "Вернуться":
+                    size 32
+                    color "#e69c09"
+                    hover_color "#e6e209"
+                action Return()
 
 
 style navigation_button is gui_button
@@ -428,7 +442,12 @@ screen game_menu(title, scroll=None, yinitial=0.0):
     if main_menu:
         add gui.main_menu_background
     else:
-        add gui.game_menu_background
+       add gui.game_menu_background
+
+    #imagemap:
+        #ground "gui/game_menu.png"
+        #idle "gui/game_menu.png"
+        #hover "gui/game_menu_light.png"
 
     frame:
         style "game_menu_outer_frame"
@@ -454,7 +473,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                         side_yfill True
 
                         vbox:
-                            transclude
+                          transclude
 
                 elif scroll == "vpgrid":
 
@@ -476,11 +495,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                     transclude
 
     use navigation
-
-    textbutton _("Вернуться"):
-        style "return_button"
-
-        action Return()
 
     label title
 
@@ -551,22 +565,40 @@ screen about():
 
     tag menu
 
+    #imagemap:
+        #ground "gui/nvl.png"
+        #idle "gui/nvl.png"
+
+        #hotspot(46, 39, 110, 105):
+            #imagebutton:
+                #idle "gui/button/back_button.png"
+                #action Return()
+        
     ## Этот оператор включает игровое меню внутрь этого экрана. Дочерний vbox
     ## включён в порт просмотра внутри экрана игрового меню.
-    use game_menu(_("Об игре"), scroll="viewport"):
+    use game_menu(_(""), scroll="viewport"):
 
         style_prefix "about"
 
         vbox:
 
-            label "[config.name!t]"
-            text _("Версия [config.version!t]\n")
+            text 'Это игра, которая поможет абитуриенту познакомиться с профессией Web-дизайнера. Выполнена в рамках основ проектной деятельности.\n\nКоманда разработчиков:\n':
+                xalign 0.5
+                yalign 0.2
+                color "#ab0ed0"
+            text 'Казанцев Ян - тимлид\nКоновалова Ксения - аналитик\nРозанова Дарья - дизайнер\nСорока Анна - геймдизайнер\nШилов Вячеслав - программист':
+                xalign 0.5
+                yalign 0.5
+                color "#aee60a"
+            text '\n\n\n\nУрФУ, 2022':
+                xalign 0.99
+                yalign 0.99
+                color '#09e6b6'
 
             ## gui.about обычно установлено в options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            #if gui.about:
+                #text "[gui.about!t]\n"
 
-            text _("Сделано с помощью {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label
@@ -599,6 +631,37 @@ screen load():
     use file_slots(_("Загрузить"))
 
 
+screen simple_game_menu():
+    imagemap:
+        ground "gui/game_menu.png"
+        idle "gui/game_menu.png"
+        hover "gui/game_menu_light.png"
+        hotspot(390, 142, 499, 103):
+            text"Продолжить":
+                xpos 112
+                ypos 22
+                size 40
+                color "#b611d7"
+                hover_color "#eab10d"
+            action Return()
+        hotspot(390, 275, 499, 103):
+            text "Загрузить":
+                xpos 145
+                ypos 22
+                size 40
+                color "#b611d7"
+                hover_color "#eab10d"
+            action ShowMenu("load")
+        hotspot(390, 403, 499, 103):
+            text "Главное меню":
+                xpos 107
+                ypos 22
+                size 40
+                color "#b611d7"
+                hover_color "#eab10d"
+            action MainMenu()
+
+
 screen file_slots(title):
 
     imagemap:
@@ -607,10 +670,57 @@ screen file_slots(title):
         hover "gui/saves_light.png"
         hotspot(46, 10, 97, 97):
             action Return()
-        hotspot(1154, 13, 103, 92):
-            action ShowMenu("about")
+        hotspot(402, 329, 508, 77):
+            if renpy.exists("saves/19-1-LT1.save") or title == "Сохранить":
+                textbutton "Слот 1":
+                        xpos 170
+                        ypos 15
+                        text_size 40
+                        text_color "#b611d7"
+                        text_hover_color "#eab10d"
+                        action FileAction("1")
+        hotspot(402, 419, 508, 77):
+            if renpy.exists("saves/19-2-LT1.save") or title == "Сохранить":
+                textbutton "Слот 2":
+                        xpos 170
+                        ypos 15
+                        text_size 40
+                        text_color "#b611d7"
+                        text_hover_color "#eab10d"
+                        action FileAction("2")
+        hotspot(402, 509, 508, 77):
+            if renpy.exists("saves/19-3-LT1.save") or title == "Сохранить":
+                textbutton "Слот 3":
+                        xpos 170
+                        ypos 15
+                        text_size 40
+                        text_color "#b611d7"
+                        text_hover_color "#eab10d"
+                        action FileAction("3")
+        hotspot(402, 599, 508, 77):
+            if renpy.exists("saves/19-4-LT1.save") or title == "Сохранить":
+                textbutton "Слот 4":
+                        xpos 170
+                        ypos 13
+                        text_size 40
+                        text_color "#b611d7"
+                        text_hover_color "#eab10d"
+                        action FileAction("4")
         hotspot(1047, 13, 103, 89):
             action ShowMenu("preferences")
+        hotspot(164, 17, 67, 69):
+            if not main_menu:
+                imagebutton:
+                    idle "gui/button/memu_button.png"
+                    action [ShowMenu("simple_game_menu"), Hide("save" if title == "Сохранить" else "load")]
+        hotspot(825, 343, 60, 52):
+            action FileDelete("1")
+        hotspot(825, 433, 60, 52):
+            action FileDelete("2")
+        hotspot(825, 522, 60, 52):
+            action FileDelete("3")
+        hotspot(825, 607, 60, 52):
+            action FileDelete("4")
 
     #default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
 
@@ -625,66 +735,66 @@ screen file_slots(title):
             ## Номер страницы, который может быть изменён посредством клика на
             ## кнопку.
            # button:
-              #  style "page_label"
+                #style "page_label"
 
                 #key_events True
                 #xalign 0.5
                 #action page_name_value.Toggle()
 
                 #input:
-                  #  style "page_label_text"
-                 #   value page_name_value
+                    #style "page_label_text"
+                    #value page_name_value
 
             ## Таблица слотов.
-           # grid gui.file_slot_cols gui.file_slot_rows:
+            #grid gui.file_slot_cols gui.file_slot_rows:
                 #style_prefix "slot"
 
-              #  xalign 0.5
-              #  yalign 0.5
+                #xalign 0.5
+                #yalign 0.5
 
-               # spacing gui.slot_spacing
+                #spacing gui.slot_spacing
 
-               # for i in range(gui.file_slot_cols * gui.file_slot_rows):
+                #for i in range(gui.file_slot_cols * gui.file_slot_rows):
 
-                 #   $ slot = i + 1
+                    #$ slot = i + 1
 
-                  #  button:
-                    #    action FileAction(slot)
+                    #button:
+                        #action FileAction(slot)
 
-                      #  has vbox
+                        #has vbox
 
-                       # add FileScreenshot(slot) xalign 0.5
+                        #add FileScreenshot(slot) xalign 0.5
 
-                       # text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("Пустой слот")):
-                       #     style "slot_time_text"
+                        #text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("Пустой слот")):
+                            #style "slot_time_text"
 
-                       # text FileSaveName(slot):
-                        #    style "slot_name_text"
+                       #text FileSaveName(slot):
+                            #style "slot_name_text"
 
-                      #  key "save_delete" action FileDelete(slot)
+                        #key "save_delete" action FileDelete(slot)
 
             ## Кнопки для доступа к другим страницам.
-           # hbox:
-             #   style_prefix "page"
+            #hbox:
+                #style_prefix "page"
 
-              #  xalign 0.5
-              #  yalign 1.0
+                #xalign 0.5
+                #yalign 1.0
 
-               # spacing gui.page_spacing
+                #spacing gui.page_spacing
 
-               # textbutton _("<") action FilePagePrevious()
+               #textbutton _("<") action FilePagePrevious()
 
-               # if config.has_autosave:
-               #     textbutton _("{#auto_page}А") action FilePage("auto")
+                #if config.has_autosave:
+                    #textbutton _("{#auto_page}А") action FilePage("auto")
 
-              #  if config.has_quicksave:
-              #      textbutton _("{#quick_page}Б") action FilePage("quick")
+                #if config.has_quicksave:
+                    #textbutton _("{#quick_page}Б") action FilePage("quick")
 
                 ## range(1, 10) задаёт диапазон значений от 1 до 9.
-               # for page in range(1, 10):
-               #     textbutton "[page]" action FilePage(page)
+                #for page in range(1, 10):
+                    #textbutton "[page]" action FilePage(page)
 
-               # textbutton _(">") action FilePageNext()
+                #textbutton _(">") action FilePageNext()
 
 
 style page_label is gui_label

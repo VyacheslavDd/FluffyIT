@@ -64,7 +64,7 @@ define gui.name_text_font = "fonts/gothamxnarrow_bold.otf"
 define gui.interface_text_font = "fonts/Montserrat-Black.otf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 20
+define gui.text_size = 22
 
 ## The size of character names.
 define gui.name_text_size = 36
@@ -246,7 +246,7 @@ define gui.file_slot_rows = 2
 
 ## The position of the left side of the navigation buttons, relative to the left
 ## side of the screen.
-define gui.navigation_xpos = 60
+define gui.navigation_xpos = 50
 
 ## The vertical position of the skip indicator.
 define gui.skip_ypos = 10
