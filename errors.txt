@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 699: 'key' is not a keyword argument or valid child for the textbutton statement.
-    key "save_delete" action FileDelete("saves/19-3-LT1.save")
-       ^
+File "game/ask_answer_part.rpy", line 43: expected menuitem
+    for elem in [1, 2]:
+    ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Nov 25 01:59:57 2022
+Fri Nov 25 22:46:33 2022

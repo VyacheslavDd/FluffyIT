@@ -712,15 +712,17 @@ screen file_slots(title):
             if not main_menu:
                 imagebutton:
                     idle "gui/button/memu_button.png"
+                    hover "gui/button/memu_button_light.png"
                     action [ShowMenu("simple_game_menu"), Hide("save" if title == "Сохранить" else "load")]
-        hotspot(825, 343, 60, 52):
-            action FileDelete("1")
-        hotspot(825, 433, 60, 52):
-            action FileDelete("2")
-        hotspot(825, 522, 60, 52):
-            action FileDelete("3")
-        hotspot(825, 607, 60, 52):
-            action FileDelete("4")
+        if title == "Загрузить":
+            hotspot(825, 343, 60, 52):
+                action FileDelete("1")
+            hotspot(825, 433, 60, 52):
+                action FileDelete("2")
+            hotspot(825, 522, 60, 52):
+                action FileDelete("3")
+            hotspot(825, 607, 60, 52):
+                action FileDelete("4")
 
     #default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
 
