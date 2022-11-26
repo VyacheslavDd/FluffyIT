@@ -2,7 +2,7 @@ label start_asking:
     hide neutral
     show emwhat at left_transform
     menu:
-        "Стоит ли мне о чём-нибудь поинтересоваться..."
+        "{size=30}Стоит ли мне о чём-нибудь поинтересоваться...{/size}"
         "Спросить про направления в университете":
             call ask_directions(False)
         "Спросить про баллы для поступления":
@@ -23,7 +23,7 @@ label ask_directions(is_end, automatic_end=False, next_label_name=""):
         jump get_to_work
     else:
         menu:
-            "Чем бы еще поинтересоваться..."
+            "{size=30}Чем бы еще поинтересоваться...{/size}"
             "Спросить про баллы для поступления":
                 call ask_scores(False, True, 'ask_attraction')
             "Спросить, чем привлекла профессия":
@@ -39,7 +39,7 @@ label ask_scores(is_end, automatic_end=False, next_label_name=""):
         jump get_to_work
     else:
         menu:
-            "Чем бы еще поинтересоваться..."
+            "{size=30}Чем бы еще поинтересоваться...{/size}"
             "Спросить про направления в университете":
                 call ask_directions(False, True, 'ask_attraction')
             "Спросить, чем привлекла профессия":
@@ -55,13 +55,8 @@ label ask_attraction(is_end, automatic_end=False, next_label_name=""):
         jump get_to_work
     else:
         menu:
-            "Чем бы еще поинтересоваться..."
+            "{size=30}Чем бы еще поинтересоваться...{/size}"
             "Спросить про направления в университете":
                 call ask_directions(False, True, 'ask_scores')
             "Спросить про баллы для поступления":
                 call ask_scores(False, True, 'ask_directions')
-
-label get_to_work:
-    $renpy.set_return_stack([])
-    "Ну, за работу!"
-    return

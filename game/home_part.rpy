@@ -21,7 +21,13 @@ label girl:
 label change_mood(value, positive):
     show screen mood
     $bar_part, mood_level = update_mood(mood_level, value)
-    $renpy.notify("Уровень настроения повышен." if positive else "Уровень настроения понижен.")
+    $renpy.notify("Уровень настроения повышен!" if positive else "Уровень настроения понижен.")
+    return
+
+label change_skill(value, positive):
+    show screen skill
+    $skill_level = update_skill(skill_level, value)
+    $renpy.notify("Самоуверенность в навыке повышена!" if positive else "Вы усомнились в ваших навыках...")
     return
 
 label start_story:
@@ -35,11 +41,12 @@ label start_story:
     hide happy
     "Вот и наступил июль! Как же быстро пролетело время... Выпускники радуются окончанию школы и наслаждаются летней порой. Но только не [main_character_name]."
     show screen mood
-
+    show screen skill
     show room with fade
     hide sunny_street
     show sad at front_transform with slowdissolve
-    main_character "Скука... Ничего не хочется, ничего не нравится... Одноклассники уже документы подали в университеты, а я еще даже не [variations[0]] с направлением. Ну, пойду перекушу что-ли..."
+    main_character "Скука... Ничего не хочется, ничего не нравится... Одноклассники уже документы подали в университеты, а я еще даже не [variations[0]] с направлением."
+    main_character "Ну, пойду перекушу что-ли..."
     hide sad with slowdissolve
 
     show kitchen with pixellate
@@ -47,7 +54,7 @@ label start_story:
     mum "О, [variations[1]]! [variations[2]] ты у меня [variations[3]]! Совсем скоро студенческая жизнь. Ты уже [variations[0]], кем хочешь стать?"
 
     menu:
-        "Что бы сказать..."
+        "{size=30}Что бы сказать...{/size}"
 
         "Нагрубить":
             call change_mood(-1, False)
@@ -93,7 +100,7 @@ label mum_choice(isrude, fphrase, final_phrase):
 
 label room_choice(picture):
     menu:
-        "Чем бы теперь заняться..."
+        "{size=30}Чем бы теперь заняться...{/size}"
 
         "Поспать":
             call sleep_or_watch(picture, very_slow_dissolve, "Спустя час...") from _call_sleep
@@ -132,11 +139,24 @@ label play_phone(picture):
     hide picture
     show happy at front_transform
     main_character 'Ведь наконец-то "Котляндия" вышла! Все так долго ждали эту игру, не терпится поиграть!'
-    "*Играет*"
+    window hide
     hide happy
-    main_character "Ой, что-то я засыпаю..."
     hide neutral
     hide sad
+
+    show screen phone_screen
+    python:
+        ui.interact()
+
+    return
+
+label playing_phone:
+    hide screen phone_screen
+    show screen playing_screen
+    window show
+    "*Играет*"
+    main_character "Ой, что-то я засыпаю..."
+    hide screen playing_screen with slowdissolve
     scene black with very_slow_dissolve
     define teleport_office = ImageDissolve("images/scenes/office.png", 3.0, 0)
     show office with teleport_office

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/ask_answer_part.rpy", line 43: expected menuitem
-    for elem in [1, 2]:
-    ^
+File "game/first_task.rpy", line 27: Menu does not contain any choices.
+    menu:
+         ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Nov 25 22:46:33 2022
+Sat Nov 26 15:45:58 2022

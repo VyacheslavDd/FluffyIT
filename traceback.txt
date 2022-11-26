@@ -1,60 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/home_part.rpy", line 54, in script call
-    call mum_choice(True, "Это не твоё дело! И так голова кипит из-за поступления, а ты ещё и напоминаешь каждый раз об этом!", "Всё, надоело! Больше из своей комнаты не выйду.") from _call_mum_choice
-  File "game/home_part.rpy", line 89, in script call
-    call room_choice("[img_prefix]_sad") from _call_room_choice
-  File "game/home_part.rpy", line 105, in script call
-    call play_phone(picture) from _call_play_phone
-  File "game/ask_answer_part.rpy", line 11, in script call
-    call ask_attraction(False)
-  File "game/ask_answer_part.rpy", line 62, in script call
-    call ask_scores(False, True, 'ask_directions')
-  File "game/ask_answer_part.rpy", line 37, in script call
-    $renpy.call(next_label_name, True)
-  File "game/ask_answer_part.rpy", line 23, in script
-    $renpy.jump_out_of_context('get_to_work')
-  File "game/ask_answer_part.rpy", line 23, in <module>
-    $renpy.jump_out_of_context('get_to_work')
-JumpOutException: get_to_work
+  File "game/first_task.rpy", line 38, in script
+    $change_skill(1, True)
+  File "game/first_task.rpy", line 38, in <module>
+    $change_skill(1, True)
+NameError: name 'change_skill' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\bootstrap.py", line 277, in bootstrap
-    renpy.main.main()
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\main.py", line 660, in main
-    run(restart)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\main.py", line 146, in run
-    renpy.execution.run_context(True)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\execution.py", line 938, in run_context
-    context.run()
-  File "game/home_part.rpy", line 54, in script call
-    call mum_choice(True, "Это не твоё дело! И так голова кипит из-за поступления, а ты ещё и напоминаешь каждый раз об этом!", "Всё, надоело! Больше из своей комнаты не выйду.") from _call_mum_choice
-  File "game/home_part.rpy", line 89, in script call
-    call room_choice("[img_prefix]_sad") from _call_room_choice
-  File "game/home_part.rpy", line 105, in script call
-    call play_phone(picture) from _call_play_phone
-  File "game/ask_answer_part.rpy", line 11, in script call
-    call ask_attraction(False)
-  File "game/ask_answer_part.rpy", line 62, in script call
-    call ask_scores(False, True, 'ask_directions')
-  File "game/ask_answer_part.rpy", line 37, in script call
-    $renpy.call(next_label_name, True)
-  File "game/ask_answer_part.rpy", line 23, in script
-    $renpy.jump_out_of_context('get_to_work')
+  File "game/first_task.rpy", line 38, in script
+    $change_skill(1, True)
   File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1131, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "E:\renpy\renpy-8.0.3-sdk\renpy\python.py", line 1061, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/ask_answer_part.rpy", line 23, in <module>
-    $renpy.jump_out_of_context('get_to_work')
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\exports.py", line 1906, in jump_out_of_context
-    raise renpy.game.JumpOutException(label)
-JumpOutException: get_to_work
+  File "game/first_task.rpy", line 38, in <module>
+    $change_skill(1, True)
+NameError: name 'change_skill' is not defined
 
 Windows-10-10.0.17763 AMD64
 Ren'Py 8.0.3.22090809
 Пушистые IT 0.0
-Fri Nov 25 22:40:47 2022
+Sat Nov 26 15:49:22 2022
