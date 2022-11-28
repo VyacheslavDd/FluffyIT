@@ -111,6 +111,11 @@ screen first_customer_talk():
     use viewport_ex(640, 0, "two", "class")
 
 
+screen second_customer_talk():
+    use viewport_ex(0, 0, "one", "office")
+    use viewport_ex(640, 0, "two", "class")
+
+
 screen phone_screen():
     imagemap:
         ground "images/scenes/hall.png"
@@ -120,12 +125,12 @@ screen phone_screen():
             action Jump("playing_phone")
 
 
-screen first_customer():
-    timer 4.0 action Hide("first_customer")
+screen customer_notification(picture, customer_name, customer_color):
+    timer 4.0 action Hide("customer_notification")
     frame:
         xsize 1280
         ysize 720
-        add "gui/nvl.png"
+        add "[picture]"
         background None
 
         text "Новый заказчик:":
@@ -134,8 +139,8 @@ screen first_customer():
             xalign 0.5
             yalign 0.1
 
-        text "Котик-Садовод":
-            color "#2ea40d"
+        text customer_name:
+            color customer_color
             size 70
             yalign 0.5
             xalign 0.5
@@ -171,6 +176,7 @@ define murka = Character("Мурка", color="#c30f8a")
 define masya = Character("Мася", color="#b2c601")
 define masya_nvl = Character(None, color="#8e450c", kind=nvl)
 define kindegarten_cat = Character("Садовод", color="#149e09")
+define restaurant_cat = Character("Ресторатор", color="#ec043d")
 define mood_level = 5
 define skill_level = 2
 define bar_part = "yellow_left"

@@ -128,7 +128,7 @@ label play_with_cat(picture):
     hide picture
     show wow at front_transform
     call change_mood(1, True)
-    main_character "Он моя радость! Хоть что-то делает жизнь веселее."
+    main_character "Хоть какая-то радость в жизни."
     hide wow
     show neutral at front_transform
     call room_choice("[img_prefix]_neutral") from _call_room_choice_3
@@ -138,6 +138,7 @@ label play_phone(picture):
     main_character "Ну, попробую поиграть в телефон..."
     hide picture
     show happy at front_transform
+    call change_mood(1, True)
     main_character 'Ведь наконец-то "Котляндия" вышла! Все так долго ждали эту игру, не терпится поиграть!'
     window hide
     hide happy

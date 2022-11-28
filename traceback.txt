@@ -1,58 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/first_task.rpy", line 14, in script
-    show neutral_cat at front_transform with slowdissolve
-Exception: A side has the wrong number of children.
+  File "game/second_task.rpy", line 3, in script call
+    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d")
+  File "game/first_task.rpy", line 1, in script
+    label show_customer(picture, name, color):
+TypeError: Too many arguments in call (expected 3, got 4).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/first_task.rpy", line 14, in script
-    show neutral_cat at front_transform with slowdissolve
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1658, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\exports.py", line 1657, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 2798, in do_with
-    return self.interact(trans_pause=True,
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 3912, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\transition.py", line 377, in render
-    bottom = render(self.old_widget, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 1800, in render
-    raise Exception("A side has the wrong number of children.")
-Exception: A side has the wrong number of children.
+  File "game/second_task.rpy", line 3, in script call
+    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d")
+  File "game/first_task.rpy", line 1, in script
+    label show_customer(picture, name, color):
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1072, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 294, in apply_arguments
+    return parameters.apply(args, kwargs, ignore_errors)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 248, in apply
+    raise TypeError(
+TypeError: Too many arguments in call (expected 3, got 4).
 
 Windows-10-10.0.17763 AMD64
 Ren'Py 8.0.3.22090809
 Пушистые IT 0.0
-Mon Nov 28 22:46:59 2022
+Tue Nov 29 00:29:27 2022

@@ -247,7 +247,7 @@ screen quick_menu():
     #if quick_menu:
 
         #hbox:
-           # style_prefix "quick"
+        # style_prefix "quick"
 
             #xalign 0.5
             #yalign 1.0
@@ -310,15 +310,15 @@ screen navigation():
 
             #textbutton _("История") action ShowMenu("history")
 
-           # textbutton _("Сохранения") action ShowMenu("save")
+        # textbutton _("Сохранения") action ShowMenu("save")
 
-       # textbutton _("Загрузить") action ShowMenu("load")
+    # textbutton _("Загрузить") action ShowMenu("load")
 
         #textbutton _("Настройки") action ShowMenu("preferences")
 
         #if _in_replay:
 
-           # textbutton _("Завершить повтор") action EndReplay(confirm=True)
+        # textbutton _("Завершить повтор") action EndReplay(confirm=True)
 
         #elif not main_menu:
 
@@ -442,7 +442,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
     if main_menu:
         add gui.main_menu_background
     else:
-       add gui.game_menu_background
+        add gui.game_menu_background
 
     #imagemap:
         #ground "gui/game_menu.png"
@@ -473,7 +473,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                         side_yfill True
 
                         vbox:
-                          transclude
+                            transclude
 
                 elif scroll == "vpgrid":
 
@@ -736,7 +736,7 @@ screen file_slots(title):
 
             ## Номер страницы, который может быть изменён посредством клика на
             ## кнопку.
-           # button:
+        # button:
                 #style "page_label"
 
                 #key_events True
@@ -770,7 +770,7 @@ screen file_slots(title):
                         #text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("Пустой слот")):
                             #style "slot_time_text"
 
-                       #text FileSaveName(slot):
+                    #text FileSaveName(slot):
                             #style "slot_name_text"
 
                         #key "save_delete" action FileDelete(slot)
@@ -784,7 +784,7 @@ screen file_slots(title):
 
                 #spacing gui.page_spacing
 
-               #textbutton _("<") action FilePagePrevious()
+            #textbutton _("<") action FilePagePrevious()
 
                 #if config.has_autosave:
                     #textbutton _("{#auto_page}А") action FilePage("auto")
@@ -935,32 +935,32 @@ screen preferences():
 
         #vbox:
 
-           # hbox:
-               # box_wrap True
+        # hbox:
+            # box_wrap True
 
                 #if renpy.variant("pc") or renpy.variant("web"):
 
-                   # vbox:
-                   #     style_prefix "radio"
-                       # label _("Режим экрана")
-                       # textbutton _("Оконный") action Preference("display", "window")
+                # vbox:
+                #     style_prefix "radio"
+                    # label _("Режим экрана")
+                    # textbutton _("Оконный") action Preference("display", "window")
                         #textbutton _("Полный") action Preference("display", "fullscreen")
 
-               # vbox:
-                   # style_prefix "check"
-                   # label _("Пропуск")
-                   # textbutton _("Всего текста") action Preference("skip", "toggle")
-                   # textbutton _("После выборов") action Preference("after choices", "toggle")
-                   # textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
+            # vbox:
+                # style_prefix "check"
+                # label _("Пропуск")
+                # textbutton _("Всего текста") action Preference("skip", "toggle")
+                # textbutton _("После выборов") action Preference("after choices", "toggle")
+                # textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
                 ## могут быть добавлены сюда для добавления новых настроек.
 
-           # null height (4 * gui.pref_spacing)
+        # null height (4 * gui.pref_spacing)
 
-           # hbox:
-               # style_prefix "slider"
-               # box_wrap True
+        # hbox:
+            # style_prefix "slider"
+            # box_wrap True
 
                 #vbox:
 
@@ -972,30 +972,30 @@ screen preferences():
 
                     #bar value Preference("auto-forward time")
 
-               # vbox:
+            # vbox:
 
-                   # if config.has_music:
-                       # label _("Громкость музыки")
+                # if config.has_music:
+                    # label _("Громкость музыки")
 
-                       # hbox:
-                       #     bar value Preference("music volume")
+                    # hbox:
+                    #     bar value Preference("music volume")
 
                     #if config.has_sound:
 
-                       # label _("Громкость звуков")
+                    # label _("Громкость звуков")
 
-                       # hbox:
-                          #  bar value Preference("sound volume")
+                    # hbox:
+                        #  bar value Preference("sound volume")
+                          
+                        # if config.sample_sound:
+                        #     textbutton _("Тест") action Play("sound", config.sample_sound)
 
-                           # if config.sample_sound:
-                           #     textbutton _("Тест") action Play("sound", config.sample_sound)
+                # if config.has_music or config.has_sound or config.has_voice:
+                    # null height gui.pref_spacing
 
-                   # if config.has_music or config.has_sound or config.has_voice:
-                       # null height gui.pref_spacing
-
-                       # textbutton _("Без звука"):
+                    # textbutton _("Без звука"):
                         #    action Preference("all mute", "toggle")
-                         #   style "mute_all_button"
+                        #   style "mute_all_button"
 
 
 style pref_label is gui_label
@@ -1347,7 +1347,7 @@ screen confirm(message, yes_action, no_action):
     add "gui/overlay/confirm.png"
 
     frame:
-
+        background None
         vbox:
             xalign .5
             yalign .5
@@ -1361,8 +1361,14 @@ screen confirm(message, yes_action, no_action):
                 xalign 0.5
                 spacing 100
 
-                textbutton _("Да") action yes_action
-                textbutton _("Нет") action no_action
+                textbutton "Да":
+                    text_color "#d4d70a"
+                    text_hover_color "#e00db4"
+                    action yes_action
+                textbutton "Нет":
+                    text_color "#d4d70a"
+                    text_hover_color "#e00db4"
+                    action no_action
 
     ## Правый клик и esc, как ответ "Нет".
     key "game_menu" action no_action

@@ -1,13 +1,17 @@
+label show_customer(picture, name, color):
+    show screen customer_notification(picture, name, color)
+    window hide
+    $renpy.pause(4., hard=True)
+    window show
+    return
+
 label get_to_work:
     masya "Что-то мне подсказывает, что нам пора приступить к работе!"
     $renpy.set_return_stack([])
     hide neutral_cat with slowdissolve
     hide emwhat with slowdissolve
     show sunny_street
-    show screen first_customer
-    window hide
-    $renpy.pause(4., hard=True)
-    window show
+    call show_customer("gui/nvl.png", "Котик-Садовод", "#2ea40d")
     hide sunny_street
     show screen first_customer_talk
     show neutral_cat onlayer screens at left_transform with slowdissolve
