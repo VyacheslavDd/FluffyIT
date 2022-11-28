@@ -15,6 +15,24 @@ init python:
         skill_level += value
         return check_if_appropriate_value(skill_level, 0, 5)
 
+screen screen_before_menu():
+    frame:
+        xsize 1280
+        ysize 720
+        add Solid("#000000", xsize=1280, ysize=720)
+        background None
+        text "ПУШИСТЫЕ IT":
+            color "#ed15b3"
+            size 60
+            xalign 0.5
+            yalign 0.5
+        text 'Команда "Бебрики"':
+            color "#ede115"
+            size 50
+            xalign 0.5
+            yalign 0.1
+
+
 screen title_screen():
     frame:
         xalign 0.5
@@ -70,6 +88,29 @@ screen skill():
             value VariableValue("skill_level", 5)
 
 
+screen viewport_ex(x_pos, y_pos, _id, scene_pic_name):
+    side "c":
+        area(x_pos, y_pos, 640, 720)
+        viewport id _id:
+            draggable False
+            add "images/scenes/[scene_pic_name].png"
+
+
+screen show_image(x_size, y_size, x_pos, y_pos, scene_pic_name):
+    frame:
+        xpos x_pos
+        ypos y_pos
+        xsize x_size
+        ysize y_size
+        add "images/scenes/[scene_pic_name].png"
+        background None
+
+
+screen first_customer_talk():
+    use viewport_ex(0, 0, "one", "nighthall")
+    use viewport_ex(640, 0, "two", "class")
+
+
 screen phone_screen():
     imagemap:
         ground "images/scenes/hall.png"
@@ -77,28 +118,6 @@ screen phone_screen():
         hover "images/scenes/hall.png"
         hotspot(0, 0, 1280, 720):
             action Jump("playing_phone")
-
-
-screen playing_screen():
-    frame:
-        xsize 1280
-        ysize 720
-        add "images/scenes/nighthall.png"
-        background None
-
-
-screen unfinished_flower_website():
-    frame:
-        xsize 1280
-        ysize 720
-        add "images/scenes/bosscabinet.png"
-
-
-screen finished_flower_website():
-    frame:
-        xsize 1280
-        ysize 720
-        add "images/scenes/schoolhall.png"
 
 
 screen first_customer():
@@ -150,6 +169,7 @@ define mum = Character("Мама", color="#0a30f0")
 define boss_cat = Character("Василий Мяукович", color="#597e0e")
 define murka = Character("Мурка", color="#c30f8a")
 define masya = Character("Мася", color="#b2c601")
+define masya_nvl = Character(None, color="#8e450c", kind=nvl)
 define kindegarten_cat = Character("Садовод", color="#149e09")
 define mood_level = 5
 define skill_level = 2
@@ -179,5 +199,4 @@ image oneeye_cat = "cat_oneeye"
 image sad_cat = "cat_sad"
 image what_cat = "cat_what"
 image mom = "mom([img_prefix])"
-
 image black = "#000000"

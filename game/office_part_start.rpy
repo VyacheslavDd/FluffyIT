@@ -1,4 +1,5 @@
 label office_part:
+    window show
     main_character "Что? Где я? Куда я вообще [variations[7]]?"
 
     if mood_level < 5:

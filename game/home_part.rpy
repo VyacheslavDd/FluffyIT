@@ -152,11 +152,12 @@ label play_phone(picture):
 
 label playing_phone:
     hide screen phone_screen
-    show screen playing_screen
+    show screen show_image(1280, 720, 0, 0, "nighthall")
     window show
     "*Играет*"
     main_character "Ой, что-то я засыпаю..."
-    hide screen playing_screen with slowdissolve
+    window hide
+    hide screen show_image with slowdissolve
     scene black with very_slow_dissolve
     define teleport_office = ImageDissolve("images/scenes/office.png", 3.0, 0)
     show office with teleport_office

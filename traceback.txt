@@ -1,26 +1,58 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/first_task.rpy", line 38, in script
-    $change_skill(1, True)
-  File "game/first_task.rpy", line 38, in <module>
-    $change_skill(1, True)
-NameError: name 'change_skill' is not defined
+  File "game/first_task.rpy", line 14, in script
+    show neutral_cat at front_transform with slowdissolve
+Exception: A side has the wrong number of children.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/first_task.rpy", line 38, in script
-    $change_skill(1, True)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\python.py", line 1061, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/first_task.rpy", line 38, in <module>
-    $change_skill(1, True)
-NameError: name 'change_skill' is not defined
+  File "game/first_task.rpy", line 14, in script
+    show neutral_cat at front_transform with slowdissolve
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1658, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\exports.py", line 1657, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 2798, in do_with
+    return self.interact(trans_pause=True,
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\transition.py", line 377, in render
+    bottom = render(self.old_widget, width, height, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\screen.py", line 704, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\display\layout.py", line 1800, in render
+    raise Exception("A side has the wrong number of children.")
+Exception: A side has the wrong number of children.
 
 Windows-10-10.0.17763 AMD64
 Ren'Py 8.0.3.22090809
 Пушистые IT 0.0
-Sat Nov 26 15:49:22 2022
+Mon Nov 28 22:46:59 2022

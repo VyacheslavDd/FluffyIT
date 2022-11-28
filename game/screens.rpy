@@ -853,20 +853,22 @@ screen preferences():
                     color "#a40693"
                     xpos 12
                     ypos 30
-                textbutton "Оконный":
-                    xpos 80
-                    ypos 6
-                    text_size 20
-                    text_color "#e0940d"
-                    text_hover_color "#e00db4"
-                    action Preference("display", "window")
-                textbutton "Полноэкранный":
-                    xpos -70
-                    ypos 40
-                    text_size 20
-                    text_color "#e0940d"
-                    text_hover_color "#e00db4"
-                    action Preference("display", "fullscreen")
+                if preferences.fullscreen:
+                    textbutton "<Весь экран>":
+                        xpos 40
+                        ypos 20
+                        text_size 35
+                        text_color "#6a0078"
+                        text_hover_color "#e00db4"
+                        action Preference("display", "window")
+                else:
+                    textbutton "<Оконный>":
+                        xpos 60
+                        ypos 20
+                        text_size 35
+                        text_color "#6a0078"
+                        text_hover_color "#e00db4"
+                        action Preference("display", "fullscreen")
 
         hotspot(404, 414, 508, 86):
             hbox:
@@ -876,18 +878,18 @@ screen preferences():
                     xpos 12
                     ypos 30
                 textbutton "Всего текста":
-                    xpos 135
-                    ypos 5
-                    text_size 20
-                    text_color "#e0940d"
+                    xpos 20
+                    ypos 25
+                    text_size 25
+                    text_color "#6a0078"
                     text_hover_color "#e00db4"
                     action Preference("skip", "toggle")
                 
                 textbutton "Переходов":
-                    xpos -15
-                    ypos 40
-                    text_size 20
-                    text_color "#e0940d"
+                    xpos 40
+                    ypos 25
+                    text_size 25
+                    text_color "#6a0078"
                     text_hover_color "#e00db4"
                     action InvertSelected(Preference("transitions", "toggle"))
         
@@ -925,8 +927,9 @@ screen preferences():
         
         hotspot(46, 10, 97, 97):
             action Return()
-        hotspot(1154, 13, 103, 92):
-            action ShowMenu("about")
+        if main_menu:
+            hotspot(1154, 13, 103, 92):
+                action ShowMenu("about")
 
     #use game_menu(_("Настройки"), scroll="viewport"):
 
