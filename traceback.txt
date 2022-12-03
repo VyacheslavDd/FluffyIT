@@ -1,28 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/second_task.rpy", line 3, in script call
-    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d")
-  File "game/first_task.rpy", line 1, in script
-    label show_customer(picture, name, color):
-TypeError: Too many arguments in call (expected 3, got 4).
+  File "game/second_task.rpy", line 162, in script call
+    call what_chosen("Самодельный лимонад 1 литр\n320р")
+  File "game/second_task.rpy", line 220, in script call
+    call answer_if_interesting(False, -1, "Жалко, что у тебя такой настрой. Возможно, это просто не твое. Однако мне моя работа очень даже по душе.")
+  File "game/second_task.rpy", line 227, in script
+    masya "[mc_answer]"
+KeyError: 'mc_answer'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/second_task.rpy", line 3, in script call
-    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d")
-  File "game/first_task.rpy", line 1, in script
-    label show_customer(picture, name, color):
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 1072, in execute
-    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 294, in apply_arguments
-    return parameters.apply(args, kwargs, ignore_errors)
-  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 248, in apply
-    raise TypeError(
-TypeError: Too many arguments in call (expected 3, got 4).
+  File "game/second_task.rpy", line 162, in script call
+    call what_chosen("Самодельный лимонад 1 литр\n320р")
+  File "game/second_task.rpy", line 220, in script call
+    call answer_if_interesting(False, -1, "Жалко, что у тебя такой настрой. Возможно, это просто не твое. Однако мне моя работа очень даже по душе.")
+  File "game/second_task.rpy", line 227, in script
+    masya "[mc_answer]"
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\character.py", line 1253, in __call__
+    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\character.py", line 1172, in prefix_suffix
+    return (sub(prefix) + sub(body) + sub(suffix))
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\character.py", line 1152, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\substitutions.py", line 278, in substitute
+    s = formatter.vformat(s, (), kwargs) # type: ignore
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 165, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 205, in _vformat
+  File "E:\renpy\renpy-8.0.3-sdk\renpy\substitutions.py", line 168, in get_field
+    obj, arg_used = super(Formatter, self).get_field(field_name, args, kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 270, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 227, in get_value
+KeyError: 'mc_answer'
 
 Windows-10-10.0.17763 AMD64
 Ren'Py 8.0.3.22090809
 Пушистые IT 0.0
-Tue Nov 29 00:29:27 2022
+Sat Dec  3 23:17:50 2022

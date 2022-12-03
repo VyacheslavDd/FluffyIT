@@ -13,7 +13,7 @@ init python:
 
     def update_skill(skill_level, value):
         skill_level += value
-        return check_if_appropriate_value(skill_level, 0, 5)
+        return check_if_appropriate_value(skill_level, 0, 10)
 
 screen screen_before_menu():
     frame:
@@ -85,7 +85,7 @@ screen skill():
         bar:
             left_bar "gui/bar/purple_left.png"
             right_bar "gui/bar/right.png"
-            value VariableValue("skill_level", 5)
+            value VariableValue("skill_level", 10)
 
 
 screen viewport_ex(x_pos, y_pos, _id, scene_pic_name):
@@ -181,8 +181,10 @@ define mood_level = 5
 define skill_level = 2
 define bar_part = "yellow_left"
 define is_boy = True
-define bv = ["определился", "сынок", "Такой", "большой стал", "стал", "нервным", "сделал", "попал", "такой", "пришёл", "новенький", "оказался", "видел"]
-define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела"]
+define bv = ["определился", "сынок", "Такой", "большой стал", "стал", "нервным", "сделал", "попал", "такой", "пришёл", "новенький", "оказался", "видел", "сделал", "нашёл",
+"выбрал"]
+define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела", "сделала", "нашла",
+"выбрала"]
 
 
 image neutral = "[img_prefix]_neutral"
