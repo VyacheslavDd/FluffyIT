@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/second_task.rpy", line 105: expected 'label_name' not found.
-    jump "[previous_label]"
-        ^
+File "game/screens.rpy", line 209: 'style' is not a keyword argument or valid child for the screen statement.
+    style choice_vbox is vbox
+         ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Sat Dec  3 21:51:20 2022
+Mon Dec  5 18:19:25 2022

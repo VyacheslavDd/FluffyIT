@@ -207,10 +207,19 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
-
+    hbox:
+        align .5, .5
+        viewport id "pchoice":
+            xfill False
+            yfill False
+            mousewheel True
+            maximum 1280, 250
+            xalign 0.5
+            vbox:
+                for i in items:
+                    textbutton i.caption action i.action
+        if len(items) > 4:
+            vbar value YScrollValue("pchoice") xmaximum 10 ymaximum 250
 
 style choice_vbox is vbox
 style choice_button is button
@@ -219,7 +228,7 @@ style choice_button_text is button_text
 style choice_vbox:
     xalign 0.5
     ypos 270
-    yanchor 0.5
+    yalign 0.5
 
     spacing gui.choice_spacing
 
@@ -227,12 +236,10 @@ style choice_button is default:
     properties gui.button_properties("choice_button")
 
 style choice_button_text is default:
-    size 30
+    size 23
     xalign 0.5
     color "#d909e6"
     #properties gui.button_text_properties("choice_button")
-
-
 ## Экран быстрого меню #########################################################
 ##
 ## Быстрое меню показывается внутри игры, чтобы обеспечить лёгкий доступ к

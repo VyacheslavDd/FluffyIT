@@ -228,5 +228,7 @@ label answer_if_interesting(is_pos_mood, value, masya_answer):
     masya "[masya_answer]"
     masya "Мне уже пишет новый клиент."
     masya "Давай посмотрим, что там!"
+    hide neutral_cat
+    jump third_task
     return
 

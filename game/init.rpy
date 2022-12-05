@@ -15,6 +15,13 @@ init python:
         skill_level += value
         return check_if_appropriate_value(skill_level, 0, 10)
 
+    def change_variants(variants, ind):
+        del variants[int(ind)]
+        for i, elem in enumerate(variants):
+            elem[1] = elem[1][:-1] + str(i)
+        return variants
+
+
 screen screen_before_menu():
     frame:
         xsize 1280
@@ -115,6 +122,9 @@ screen second_customer_talk():
     use viewport_ex(0, 0, "one", "office")
     use viewport_ex(640, 0, "two", "class")
 
+screen third_customer_talk():
+    use viewport_ex(0, 0, "one", "boysroom")
+    use viewport_ex(640, 0, "two", "class")
 
 screen phone_screen():
     imagemap:
@@ -177,6 +187,7 @@ define masya = Character("Мася", color="#b2c601")
 define masya_nvl = Character(None, color="#8e450c", kind=nvl)
 define kindegarten_cat = Character("Садовод", color="#149e09")
 define restaurant_cat = Character("Ресторатор", color="#ec043d")
+define science_cat = Character("Учёный", color="#4f3fe2")
 define mood_level = 5
 define skill_level = 2
 define bar_part = "yellow_left"
