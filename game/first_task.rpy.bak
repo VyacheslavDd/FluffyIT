@@ -11,7 +11,7 @@ label get_to_work:
     hide neutral_cat with slowdissolve
     hide emwhat with slowdissolve
     show sunny_street
-    call show_customer("gui/nvl.png", "Котик-Садовод", "#2ea40d") from _call_show_customer
+    call show_customer("gui/nvl.png", "Котик-Садовод", "#2ea40d")
     hide sunny_street
     show screen first_customer_talk
     show neutral_cat onlayer screens at left_transform with slowdissolve
@@ -35,22 +35,22 @@ label get_to_work:
     menu:
         "{size=30}В чём же проблема?{/size}"
         "Список товаров расположен не в алфавитном порядке!":
-            call neutral_choice(True) from _call_neutral_choice
+            call neutral_choice(True)
         "Не хватает фотографий товаров!":
             jump right_choice
         "Тут очень маленький выбор!":
-            call wrong_choice(True) from _call_wrong_choice
+            call wrong_choice(True)
     return
 
 label wrong_choice(offer_two):
-    call change_skill(-1, False) from _call_change_skill
+    call change_skill(-1, False)
     hide neutral
     show serious_cat at front_transform with hpunch
     masya "Ты чего? У нашего заказчика очень много разных товаров! Я еще нигде не видел столько красивых растений!"
     hide serious_cat
     show sad at front_transform
     main_character "Ой..."
-    call change_mood(-1, False) from _call_change_mood_3
+    call change_mood(-1, False)
     show neutral at front_transform
     hide sad
     if not offer_two:
@@ -64,7 +64,7 @@ label wrong_choice(offer_two):
             "Не хватает фотографий товаров!":
                 jump right_choice
             "Список товаров расположен не в алфавитном порядке!":
-                call neutral_choice(False) from _call_neutral_choice_1
+                call neutral_choice(False)
     
     return
 
@@ -85,11 +85,11 @@ label neutral_choice(offer_two):
             "Не хватает фотографий товаров!":
                 jump right_choice
             "Тут очень маленький выбор!":
-                call wrong_choice(False) from _call_wrong_choice_1
+                call wrong_choice(False)
 
 label right_choice:
     $renpy.set_return_stack([])
-    call change_skill(1, True) from _call_change_skill_1
+    call change_skill(1, True)
     hide neutral with slowdissolve
     show happy_cat at front_transform with slowdissolve
     masya "Точно! Я бы никогда не догадался без твоей помощи! Сейчас мы это исправим."
@@ -103,7 +103,7 @@ label right_choice:
     masya "Мы все исправили! Ждем вашей оценки."
     hide wow
     show screen show_image(1280, 720, 0, 0, "schoolhall")
-    call change_mood(1, True) from _call_change_mood_4
+    call change_mood(1, True)
     kindegarten_cat "Просто прелестно! Как будто смотрю на свою прекрасную клумбу."
     main_character "Мы очень рады, что Вам понравилось! Желаем хороших продаж. Обращайтесь к нам еще."
 

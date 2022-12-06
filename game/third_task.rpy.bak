@@ -1,6 +1,6 @@
 label third_task:
     show sunny_street
-    call show_customer("gui/nvl.png", "Котик-учёный", "#c9d2d5") from _call_show_customer_2
+    call show_customer("gui/nvl.png", "Котик-учёный", "#c9d2d5")
     hide sunny_street
     show screen third_customer_talk
     show neutral_cat onlayer screens at left_transform with slowdissolve
@@ -31,17 +31,17 @@ label start_guessing:
     $result = renpy.display_menu(variants)
     window show
     if "punish" in result:
-        call punish_character(result[-1]) from _call_punish_character
+        call punish_character(result[-1])
     else:
-        call award_character(result[-1]) from _call_award_character
+        call award_character(result[-1])
     return
 
 label punish_character(ind):
-    call change_skill(-1, False) from _call_change_skill_6
+    call change_skill(-1, False)
     show sad_cat with vpunch
     masya "Боюсь, это только ухудшит работу сайта"
     hide sad_cat
-    call update_variants(ind) from _call_update_variants
+    call update_variants(ind)
     return
 
 label award_character(ind):
@@ -50,7 +50,7 @@ label award_character(ind):
     if correct_variants == 0:
         jump continue_third_task
     else:
-        call update_variants(ind) from _call_update_variants_1
+        call update_variants(ind)
     return
 
 label update_variants(ind):

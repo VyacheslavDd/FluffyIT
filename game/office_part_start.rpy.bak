@@ -3,14 +3,14 @@ label office_part:
     main_character "Что? Где я? Куда я вообще [variations[7]]?"
 
     if mood_level < 5:
-        call change_mood(-1, False) from _call_change_mood_10
+        call change_mood(-1, False)
         show emwhat at left_transform with move
         show serious_cat at right_transform with moveinright
         show oh_my_gosh at left_transform
         hide emwhat
         boss_cat "Ты кто еще [variations[8]]? Еще и выглядишь хмуро. [variations[9]] на вакансию сисадмина чтобы взломать нас?"
     else:
-        call change_mood(1, True) from _call_change_mood_11
+        call change_mood(1, True)
         show emwhat at left_transform with move
         show neutral_cat at right_transform with moveinright
         show oh_my_gosh at left_transform

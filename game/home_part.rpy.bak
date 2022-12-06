@@ -27,7 +27,7 @@ label change_mood(value, positive):
 label change_skill(value, positive):
     show screen skill
     $skill_level = update_skill(skill_level, value)
-    $renpy.notify("Уверенность в навыке повышена!" if positive else "Вы усомнились в ваших навыках...")
+    $renpy.notify("Самоуверенность в навыке повышена!" if positive else "Вы усомнились в ваших навыках...")
     return
 
 label start_story:
@@ -57,10 +57,10 @@ label start_story:
         "{size=30}Что бы сказать...{/size}"
 
         "Нагрубить":
-            call change_mood(-1, False) from _call_change_mood_5
+            call change_mood(-1, False)
             call mum_choice(True, "Это не твоё дело! И так голова кипит из-за поступления, а ты ещё и напоминаешь каждый раз об этом!", "Всё, надоело! Больше из своей комнаты не выйду.") from _call_mum_choice
         "Спокойно ответить":
-            call change_mood(1, True) from _call_change_mood_6
+            call change_mood(1, True)
             call mum_choice(False, "Нет, и я очень переживаю по этому поводу... Совсем опускаются руки.",  "Надо бы и вправду отдохнуть от навязчивых мыслей.") from _call_mum_choice_1
     
     return
@@ -119,7 +119,7 @@ label sleep_or_watch(picture, effect, phrase):
     "[phrase]"
     show room with effect
     show sad at front_transform with slowdissolve
-    call change_mood(-1, False) from _call_change_mood_7
+    call change_mood(-1, False)
     main_character "Опять я не [variations[6]] ничего полезного... Ужасно!"
     call room_choice(picture) from _call_room_choice_2
     return
@@ -127,7 +127,7 @@ label sleep_or_watch(picture, effect, phrase):
 label play_with_cat(picture):
     hide picture
     show wow at front_transform
-    call change_mood(1, True) from _call_change_mood_8
+    call change_mood(1, True)
     main_character "Хоть какая-то радость в жизни."
     hide wow
     show neutral at front_transform
@@ -138,7 +138,7 @@ label play_phone(picture):
     main_character "Ну, попробую поиграть в телефон..."
     hide picture
     show happy at front_transform
-    call change_mood(1, True) from _call_change_mood_9
+    call change_mood(1, True)
     main_character 'Ведь наконец-то "Котляндия" вышла! Все так долго ждали эту игру, не терпится поиграть!'
     window hide
     hide happy
