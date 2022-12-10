@@ -10,21 +10,19 @@ label get_to_work:
     $renpy.set_return_stack([])
     hide neutral_cat with slowdissolve
     hide emwhat with slowdissolve
-    show sunny_street
+    show kinden_f
     call show_customer("gui/nvl.png", "Котик-Садовод", "#2ea40d") from _call_show_customer
-    hide sunny_street
+    hide kinden_f
     show screen first_customer_talk
-    show neutral_cat onlayer screens at left_transform with slowdissolve
+    show cat_kindegarten onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
     kindegarten_cat "{size=20}Здравствуйте! У меня свой маленький магазинчик с цветами и декоративными  растениями. Мой внук сказал, что в магазины давно никто не ходит, а все покупают в Интернете.{/size}"
-    show sad_cat onlayer screens at left_transform
-    hide neutral_cat onlayer screens
     kindegarten_cat "Поэтому я решил, что мне нужен сайт! Внучок помог мне его сделать, но еще ни один из покупателей не заказал товар... Пожалуйста, подскажите, что же не так?"
     show serious_cat onlayer screens at right_transform
     hide happy_cat onlayer screens
     masya "Ну-ка, ну-ка... Давайте посмотрим на Ваш сайт."
     hide serious_cat onlayer screens
-    hide sad_cat onlayer screens
+    hide cat_kindegarten onlayer screens
     hide screen first_customer_talk
     show screen show_image(1280, 720, 0, 0, "bosscabinet")
     masya "Та-а-ак...."
@@ -32,17 +30,21 @@ label get_to_work:
     hide screen show_image
     show neutral at front_transform
     main_character "Тут же все крайне очевидно..."
+    jump problem_menu
+    return
+
+label problem_menu:
     menu:
         "{size=30}В чём же проблема?{/size}"
         "Список товаров расположен не в алфавитном порядке!":
-            call neutral_choice(True) from _call_neutral_choice
+            jump neutral_choice
         "Не хватает фотографий товаров!":
             jump right_choice
         "Тут очень маленький выбор!":
-            call wrong_choice(True) from _call_wrong_choice
+            jump wrong_choice
     return
 
-label wrong_choice(offer_two):
+label wrong_choice:
     call change_skill(-1, False) from _call_change_skill
     hide neutral
     show serious_cat at front_transform with hpunch
@@ -53,39 +55,17 @@ label wrong_choice(offer_two):
     call change_mood(-1, False) from _call_change_mood_3
     show neutral at front_transform
     hide sad
-    if not offer_two:
-        menu:
-            "{size=30}В чём же проблема?{/size}"
-            "Не хватает фотографий товаров!":
-                jump right_choice
-    else:
-        menu:
-            "{size=30}В чём же проблема?{/size}"
-            "Не хватает фотографий товаров!":
-                jump right_choice
-            "Список товаров расположен не в алфавитном порядке!":
-                call neutral_choice(False) from _call_neutral_choice_1
-    
+    jump problem_menu
     return
 
-label neutral_choice(offer_two):
+label neutral_choice:
     hide neutral
     show neutral_cat at front_transform with slowdissolve
     masya "Не думаю, что это сильно важно. Возможно, товары отсортированы по их популярности. Покупателю так даже удобней."
     hide neutral_cat
     show neutral at front_transform
-    if not offer_two:
-        menu:
-            "{size=30}В чём же проблема?{/size}"
-            "Не хватает фотографий товаров!":
-                jump right_choice
-    else:
-        menu:
-            "{size=30}В чём же проблема?{/size}"
-            "Не хватает фотографий товаров!":
-                jump right_choice
-            "Тут очень маленький выбор!":
-                call wrong_choice(False) from _call_wrong_choice_1
+    jump problem_menu
+    return
 
 label right_choice:
     $renpy.set_return_stack([])
@@ -94,21 +74,22 @@ label right_choice:
     show happy_cat at front_transform with slowdissolve
     masya "Точно! Я бы никогда не догадался без твоей помощи! Сейчас мы это исправим."
     hide happy_cat with moveoutright
-    show happy at front_transform with slowdissolve
+    show screen show_image(1280, 720, 0, 0, "schoolhall") with slowdissolve
     "...да, сейчас мы кое-что добавим..."
     "...вам точно подходят такие варианты?"
     "..."
-    show wow at front_transform
-    hide happy
     masya "Мы все исправили! Ждем вашей оценки."
-    hide wow
-    show screen show_image(1280, 720, 0, 0, "schoolhall")
+    hide screen show_image
+    show screen first_customer_talk
+    show cat_kindegarten onlayer screens at left_transform
+    show happy onlayer screens at right_transform
     call change_mood(1, True) from _call_change_mood_4
     kindegarten_cat "Просто прелестно! Как будто смотрю на свою прекрасную клумбу."
     main_character "Мы очень рады, что Вам понравилось! Желаем хороших продаж. Обращайтесь к нам еще."
-
-    hide screen show_image
-    show mur_cat at very_left_transform
+    hide cat_kindegarten onlayer screens with slowdissolve
+    hide happy onlayer screens with slowdissolve
+    hide screen first_customer_talk with slowdissolve
+    show cat_secretary at very_left_transform
     nvl show dissolve
     masya_nvl "{color=#12e2e6}Мурка{/color}: {color=#e6d712}Запомни, хорошие изображения добавляют ценность контенту в глазах посетителя сайта.{/color}"
     masya_nvl "{color=#e6d712}Это залог успеха веб-разработчика!{/color}"
@@ -120,7 +101,7 @@ label right_choice:
     masya_nvl "·Размер изображений должен быть не слишком большим – иначе сайт становится медленнее, из-за этого меньше просматривается."
     nvl clear
     nvl hide dissolve
-    hide mur_cat
+    hide cat_secretary
     show happy at front_transform
     main_character "Это я обязательно запомню!"
     show happy at left_transform with move

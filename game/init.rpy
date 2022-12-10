@@ -114,16 +114,16 @@ screen show_image(x_size, y_size, x_pos, y_pos, scene_pic_name):
 
 
 screen first_customer_talk():
-    use viewport_ex(0, 0, "one", "nighthall")
+    use viewport_ex(0, 0, "one", "kinden")
     use viewport_ex(640, 0, "two", "class")
 
 
 screen second_customer_talk():
-    use viewport_ex(0, 0, "one", "office")
+    use viewport_ex(0, 0, "one", "rest")
     use viewport_ex(640, 0, "two", "class")
 
 screen third_customer_talk():
-    use viewport_ex(0, 0, "one", "boysroom")
+    use viewport_ex(0, 0, "one", "laboratory")
     use viewport_ex(640, 0, "two", "class")
 
 screen phone_screen():
@@ -199,6 +199,11 @@ define gv = ["определилась", "дочка", "Такая", "больш
 
 
 image neutral = "[img_prefix]_neutral"
+image cat_kindegarten = "kindegarten"
+image cat_boss = "boss"
+image cat_restaurant = "restaurant"
+image cat_secretary = "secretary"
+image cat_science = "scientist"
 image angry = "[img_prefix]_angry"
 image emwhat = "[img_prefix]_emwhat"
 image happy = "[img_prefix]_happy"
@@ -206,6 +211,9 @@ image sad = "[img_prefix]_sad"
 image wow = "[img_prefix]_wow"
 image oh_my_gosh = "[img_prefix]_omg"
 image sunny_street = "street"
+image lab = "lab_full"
+image restaurant_f = "rest_full"
+image kinden_f = "kind_full"
 image pretty_kitchen = "kitchen"
 image class_room = "class"
 image room = "[img_prefix]sroom"

@@ -1,18 +1,26 @@
-label second_task:
-    show sunny_street
-    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d")
-    hide sunny_street
+label show_dialog_second:
     show screen second_customer_talk
-    show serious_cat onlayer screens at left_transform with slowdissolve
+    show cat_restaurant onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
+    return
+
+label hide_dialog_second:
+    hide screen second_customer_talk
+    hide cat_restaurant onlayer screens
+    hide happy_cat onlayer screens
+    return
+
+label second_task:
+    show restaurant_f
+    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d") from _call_show_customer_1
+    hide restaurant_f
+    call show_dialog_second
     restaurant_cat "Доброго времени суток! Я очень занята, нету времени все подробно описывать."
     restaurant_cat "Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза."
     restaurant_cat "Надеюсь вы сумеете исправить это. Жду вашей работы."
     masya "Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт."
     show screen show_image(1280, 720, 0, 0, "kitchen")
-    hide screen second_customer_talk
-    hide serious_cat onlayer screens
-    hide happy_cat onlayer screens
+    call hide_dialog_second
     main_character "Хм... Я не вижу ни слова про доставку на этом сайте."
     masya "Я тоже ничего не могу найти... Займешься этим, пока я доделываю свои старые работы?"
     
@@ -28,19 +36,19 @@ label second_task:
     return
 
 label do_help:
-    call change_skill(1, True)
+    call change_skill(1, True) from _call_change_skill_2
     masya "Спасибо. Ты настоящий друг. Тогда за работу!"
-    call change_mood(1, True)
+    call change_mood(1, True) from _call_change_mood_12
     main_character "Уже начинаю!"
     jump start_work
     return
 
 label refuse_help:
-    call change_skill(-1, False)
+    call change_skill(-1, False) from _call_change_skill_3
     show serious_cat at front_transform with vpunch
     masya "Хэй, тут не место лентяям. Мы должны ответственно относиться к своей работе!"
     masya "Прости, но тебе все же придется сделать это."
-    call change_mood(-1, False)
+    call change_mood(-1, False) from _call_change_mood_13
     hide serious_cat
     main_character "Видимо у меня изначально не было выбора..."
     jump start_work
@@ -63,7 +71,7 @@ label finish_masya_task:
     "Проходит какое-то время..."
     show class_room with slowdissolve
     show happy at front_transform with slowdissolve
-    call change_skill(1, True)
+    call change_skill(1, True) from _call_change_skill_4
     main_character "Мася, я все [variations[13]]. Ты уже нашел источник проблемы?"
     hide happy
     show emwhat at front_transform
@@ -81,9 +89,9 @@ label start_work:
     menu:
         "{size=30}Хм, с какого бы раздела сайта начать?{/size}"
         "Наши адреса":
-            call afraid_that_nothing
+            call afraid_that_nothing from _call_afraid_that_nothing
         "Отзывы":
-            call afraid_that_nothing
+            call afraid_that_nothing from _call_afraid_that_nothing_1
         "Меню":
             jump rest_menu
         "Контакты":
@@ -110,11 +118,11 @@ label contacts:
     menu:
         "{size=30}Какой раздел?{/size}"
         "Наш персонал":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_2
         "Наши соцсети":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_3
         "Телефоны":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_4
     return
 
 label rest_menu:
@@ -122,15 +130,15 @@ label rest_menu:
     menu:
         "{size=30}Какой раздел?{/size}"
         "Горячее":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_5
         "Десерты":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_6
         "Супы":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_7
         "Закуски":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_8
         "Напитки":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_9
     return
 
 label discounts:
@@ -138,11 +146,11 @@ label discounts:
     menu:
         "{size=30}Какой раздел?{/size}"
         "Для именинников":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_10
         "Комбо-наборы":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_11
         "Сезонные акции":
-            call afraid_that_nothing(jump_to)
+            call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_12
         "Доставка при заказе от 299 рублей!!!":
             jump found_site
     return
@@ -151,15 +159,15 @@ label working_rest_menu:
     menu:
         "{size=30}Что попробую заказать?{/size}"
         "Горячее":
-            call what_chosen("Фаршированный овощами цыпленок\n590р")
+            call what_chosen("Фаршированный овощами цыпленок\n590р") from _call_what_chosen
         "Десерты":
-            call what_chosen("Наполеон\n400р")
+            call what_chosen("Наполеон\n400р") from _call_what_chosen_1
         "Супы":
-            call what_chosen("Суп с лапшой и курицей\n350р")
+            call what_chosen("Суп с лапшой и курицей\n350р") from _call_what_chosen_2
         "Закуски":
-            call what_chosen('салат "Цезарь"\n300р')
+            call what_chosen('салат "Цезарь"\n300р') from _call_what_chosen_3
         "Напитки":
-            call what_chosen("Самодельный лимонад 1 литр\n320р")
+            call what_chosen("Самодельный лимонад 1 литр\n320р") from _call_what_chosen_4
     return
 
 label what_chosen(food):
@@ -169,7 +177,7 @@ label what_chosen(food):
     return
 
 label found_site:
-    call change_skill(True, 5)
+    call change_skill(True, 5) from _call_change_skill_5
     main_character "Ну наконец-то [variations[14]]!!! Это было сложно... Теперь-то я понимаю, почему никто не заказывал доставку."
     main_character "Теперь нужно попробовать ее заказать самому."
     jump working_rest_menu
@@ -189,9 +197,16 @@ label after_choosing:
     hide happy_cat with moveoutright
     show screen show_image(1280, 720, 0, 0, "kitchen") with very_slow_dissolve
     masya "Красота..."
-    hide screen show_image with very_slow_dissolve
-
-    show mur_cat at very_left_transform with moveinleft
+    hide screen show_image
+    show screen second_customer_talk
+    show cat_restaurant onlayer screens at left_transform
+    show happy onlayer screens at right_transform
+    restaurant_cat "Благодарю вас! Заказов стало гораздо больше. Я порекомендую вас своим знакомым."
+    main_character "Всегда рады помочь! Тем более за такую хорошую рекламу."
+    hide cat_restaurant onlayer screens with slowdissolve
+    hide happy onlayer screens with slowdissolve
+    hide screen second_customer_talk with slowdissolve
+    show cat_secretary at very_left_transform with moveinleft
     nvl show dissolve
     masya_nvl "{color=#12e2e6}Мурка{/color}: {color=#e6d712}Запомните, то, насколько просто и понятно можно передвигаться по сайту — очень важно.{/color}"
     masya_nvl "{color=#e6d712}Простая навигация положительно сказывается на месте в поисковиках.{/color}"
@@ -202,7 +217,7 @@ label after_choosing:
     masya_nvl "·{b}Продуманное визуальное оформление{/b}. Элементы навигации должны контрастировать с фоном и основным текстом, но не выбиваться из общего цветового решения веб-ресурса."
     nvl clear
     nvl hide dissolve
-    hide mur_cat
+    hide cat_secretary
     show happy at front_transform with slowdissolve
     main_character "Учтем это в следующих наших работах!"
     hide happy
@@ -215,14 +230,13 @@ label after_choosing:
     menu:
         "{size=30}Пора задуматься...{/size}"
         "Думаю, что да. Меня действительно заинтересовала наша с тобой работа.":
-            call answer_if_interesting(True, 1, "Это прелестно. Я рад, что смог привить тебе любовь к своей профессии.")
+            call answer_if_interesting(True, 1, "Это прелестно. Я рад, что смог привить тебе любовь к своей профессии.") from _call_answer_if_interesting
         "Честно говоря, я делаю это все только потому, что у меня нет другого выбора.":
-            call answer_if_interesting(False, -1, "Жалко, что у тебя такой настрой. Возможно, это просто не твое. Однако мне моя работа очень даже по душе.")
-        
+            call answer_if_interesting(False, -1, "Жалко, что у тебя такой настрой. Возможно, это просто не твое. Однако мне моя работа очень даже по душе.") from _call_answer_if_interesting_1
     return
 
 label answer_if_interesting(is_pos_mood, value, masya_answer):
-    call change_mood(is_pos_mood, value)
+    call change_mood(value, is_pos_mood) from _call_change_mood_14
     hide neutral
     show neutral_cat at front_transform
     masya "[masya_answer]"

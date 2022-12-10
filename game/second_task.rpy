@@ -1,18 +1,26 @@
-label second_task:
-    show sunny_street
-    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d") from _call_show_customer_1
-    hide sunny_street
+label show_dialog_second:
     show screen second_customer_talk
-    show serious_cat onlayer screens at left_transform with slowdissolve
+    show cat_restaurant onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
+    return
+
+label hide_dialog_second:
+    hide screen second_customer_talk
+    hide cat_restaurant onlayer screens
+    hide happy_cat onlayer screens
+    return
+
+label second_task:
+    show restaurant_f
+    call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d") from _call_show_customer_1
+    hide restaurant_f
+    call show_dialog_second from _call_show_dialog_second
     restaurant_cat "Доброго времени суток! Я очень занята, нету времени все подробно описывать."
     restaurant_cat "Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза."
     restaurant_cat "Надеюсь вы сумеете исправить это. Жду вашей работы."
     masya "Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт."
     show screen show_image(1280, 720, 0, 0, "kitchen")
-    hide screen second_customer_talk
-    hide serious_cat onlayer screens
-    hide happy_cat onlayer screens
+    call hide_dialog_second from _call_hide_dialog_second
     main_character "Хм... Я не вижу ни слова про доставку на этом сайте."
     masya "Я тоже ничего не могу найти... Займешься этим, пока я доделываю свои старые работы?"
     
@@ -189,9 +197,16 @@ label after_choosing:
     hide happy_cat with moveoutright
     show screen show_image(1280, 720, 0, 0, "kitchen") with very_slow_dissolve
     masya "Красота..."
-    hide screen show_image with very_slow_dissolve
-
-    show mur_cat at very_left_transform with moveinleft
+    hide screen show_image
+    show screen second_customer_talk
+    show cat_restaurant onlayer screens at left_transform
+    show happy onlayer screens at right_transform
+    restaurant_cat "Благодарю вас! Заказов стало гораздо больше. Я порекомендую вас своим знакомым."
+    main_character "Всегда рады помочь! Тем более за такую хорошую рекламу."
+    hide cat_restaurant onlayer screens with slowdissolve
+    hide happy onlayer screens with slowdissolve
+    hide screen second_customer_talk with slowdissolve
+    show cat_secretary at very_left_transform with moveinleft
     nvl show dissolve
     masya_nvl "{color=#12e2e6}Мурка{/color}: {color=#e6d712}Запомните, то, насколько просто и понятно можно передвигаться по сайту — очень важно.{/color}"
     masya_nvl "{color=#e6d712}Простая навигация положительно сказывается на месте в поисковиках.{/color}"
@@ -202,7 +217,7 @@ label after_choosing:
     masya_nvl "·{b}Продуманное визуальное оформление{/b}. Элементы навигации должны контрастировать с фоном и основным текстом, но не выбиваться из общего цветового решения веб-ресурса."
     nvl clear
     nvl hide dissolve
-    hide mur_cat
+    hide cat_secretary
     show happy at front_transform with slowdissolve
     main_character "Учтем это в следующих наших работах!"
     hide happy

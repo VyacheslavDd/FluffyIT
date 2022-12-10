@@ -1,27 +1,25 @@
 label third_task:
-    show sunny_street
+    show lab
     call show_customer("gui/nvl.png", "Котик-учёный", "#c9d2d5") from _call_show_customer_2
-    hide sunny_street
+    hide lab
     show screen third_customer_talk
-    show neutral_cat onlayer screens at left_transform with slowdissolve
+    show cat_science onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
     science_cat "Привет! Я начинающий ученый, и мы с моими коллегами решили вести сайт, на котором будем публиковать интересные научные статьи и наши открытия."
-    hide neutral_cat onlayer screens
-    show sad_cat onlayer screens at left_transform
     science_cat "Но наш сайт просто-напросто не открывается! Помогите нам. Ссылку уже отправил."
     masya "Отлично! Сейчас разберемся."
     show screen show_image(1280, 720, 0, 0, "kitchen")
-    hide sad_cat onlayer screens
+    hide cat_science onlayer screens
     hide happy_cat onlayer screens
     hide screen third_customer_talk
     masya "Хм, надо его как-нибудь ускорить. Как думаешь, что поможет?"
     $correct_variants = 3
     $variants = [["Разместить на сайте Flash-баннеры", "punish 0"],
-                ["Применить кэширование", "award 1"],
+                ["Применить кэширование", "award 10"],
                 ["Повысить разрешение изображений на сайте", "punish 2"],
                 ["Добавить в код комментарии для ясности", "punish 3"],
-                ["Сократить время ответа сервера", "award 4"],
-                ["Применить поэтапную загрузку контента", "award 5"]
+                ["Сократить время ответа сервера", "award 40"],
+                ["Применить поэтапную загрузку контента", "award 50"]
                 ]
     jump start_guessing
     return
@@ -31,42 +29,50 @@ label start_guessing:
     $result = renpy.display_menu(variants)
     window show
     if "punish" in result:
-        call punish_character(result[-1]) from _call_punish_character
+        jump punish_character
     else:
-        call award_character(result[-1]) from _call_award_character
+        call award_character(result[-2:]) from _call_award_character
     return
 
-label punish_character(ind):
+label punish_character:
     call change_skill(-1, False) from _call_change_skill_6
     show sad_cat with vpunch
     masya "Боюсь, это только ухудшит работу сайта"
     hide sad_cat
-    call update_variants(ind) from _call_update_variants
+    jump start_guessing
     return
 
 label award_character(ind):
-    masya "Стало намного лучше!"
-    $correct_variants -= 1
-    if correct_variants == 0:
-        jump continue_third_task
+    if (ind[-1]) != "0":
+        masya "Мы уже добавили это."
+        jump start_guessing
     else:
-        call update_variants(ind) from _call_update_variants_1
-    return
-
-label update_variants(ind):
-    $variants = change_variants(variants, ind)
-    jump start_guessing
+        masya "Стало намного лучше!"
+        $correct_variants -= 1
+        if correct_variants == 0:
+            jump continue_third_task
+        else:
+            python:
+                variants[int(ind[0])][1] =  variants[int(ind[0])][1][:-1] + "1"
+            jump start_guessing
     return
 
 label continue_third_task:
     hide neutral_cat
-    masya "Так-то лучше! Давай посмотрим, как работает сайт сейчас."
+    masya "Так-то лучше..."
     hide screen show_image
     show screen show_image(1280, 720, 0, 0, "girlsroom")
+    masya "Вот, как работает сайт сейчас!"
+    hide screen show_image
+    show screen third_customer_talk
+    show cat_science onlayer screens at left_transform
+    show happy onlayer screens at right_transform
     science_cat "Спасибо! Видимо мы перестарались над оформлением сайта. Вы очень нас выручили."
     main_character "Всегда рады Вам помочь!"
-    hide screen show_image
-    show mur_cat at very_left_transform with slowdissolve
+    hide cat_science onlayer screens with slowdissolve
+    hide happy onlayer screens with slowdissolve
+    hide screen third_customer_talk with slowdissolve
+    show cat_secretary at very_left_transform with slowdissolve
     nvl show dissolve
     masya_nvl "{color=#12e2e6}Мурка{/color}: {color=#e6d712}Если сайт не загрузится быстрее, чем за две секунды, то большая часть пользователей его покинет.{/color}"
     masya_nvl "{color=#e6d712}Веб-дизайнер должен тестировать скорость загрузки страниц сайта.{/color}"
@@ -79,7 +85,7 @@ label continue_third_task:
     masya_nvl "{b}Применение кэширования;\n\nПрименение поэтапной загрузки контента;\n\nСжатие изображений;\n\nОтказ от ненужных изображений.{/b}"
     masya_nvl "{color=#e6d712}И многое другое...{/color}"
     nvl hide dissolve
-    hide mur_cat
+    hide cat_secretary
     show happy at front_transform
     "ok"
     return
