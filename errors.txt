@@ -2,9 +2,12 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 209: 'style' is not a keyword argument or valid child for the screen statement.
-    style choice_vbox is vbox
-         ^
+File "game/ask_answer_part.rpy", line 5: expected statement.
+    questions = [["Спросить про направления в университете 0", "ask_directions"],
+              ^
+                    ["Спросить про баллы для поступления 1", "ask_scores"],
+                    ["Спросить, чем привлекла профессия 2", "ask_attraction"],
+                    ["Приступить к работе 3", "get_to_work"]]
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Mon Dec  5 18:19:25 2022
+Sat Dec 10 21:35:48 2022

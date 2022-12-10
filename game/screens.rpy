@@ -239,7 +239,6 @@ style choice_button_text is default:
     size 23
     xalign 0.5
     color "#d909e6"
-    #properties gui.button_text_properties("choice_button")
 ## Экран быстрого меню #########################################################
 ##
 ## Быстрое меню показывается внутри игры, чтобы обеспечить лёгкий доступ к
@@ -248,29 +247,6 @@ style choice_button_text is default:
 screen quick_menu():
     pass
 
-    ## Гарантирует, что оно появляется поверх других экранов.
-    #zorder 100
-
-    #if quick_menu:
-
-        #hbox:
-        # style_prefix "quick"
-
-            #xalign 0.5
-            #yalign 1.0
-
-            #textbutton _("Назад") action Rollback()
-            #textbutton _("История") action ShowMenu('history')
-            #textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
-            #textbutton _("Авто") action Preference("auto-forward", "toggle")
-            #textbutton _("Сохранить") action ShowMenu('save')
-            #textbutton _("Б.Сохр") action QuickSave()
-            #textbutton _("Б.Загр") action QuickLoad()
-            #textbutton _("Опции") action ShowMenu('preferences')
-
-
-## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
-## время, если только игрок не скроет интерфейс.
 init python:
     config.overlay_screens.append("quick_menu")
 
@@ -296,13 +272,7 @@ style quick_button_text:
 ## другим меню и к началу игры.
 
 screen navigation():
-        #frame:
-            #xalign 0.07
-            #yalign 0.9
-            #background None
-            #imagebutton:
-                #idle "gui/button/back_button.png"
-                #action Return()
+
     vbox:
         style_prefix "navigation"
         xpos gui.navigation_xpos
@@ -310,33 +280,6 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        #if main_menu:
-
-            #textbutton _("Играть") action Start()
-        #else:
-
-            #textbutton _("История") action ShowMenu("history")
-
-        # textbutton _("Сохранения") action ShowMenu("save")
-
-    # textbutton _("Загрузить") action ShowMenu("load")
-
-        #textbutton _("Настройки") action ShowMenu("preferences")
-
-        #if _in_replay:
-
-        # textbutton _("Завершить повтор") action EndReplay(confirm=True)
-
-        #elif not main_menu:
-
-            #textbutton _("Главное меню") action MainMenu()
-
-        ##textbutton _("Об игре") action ShowMenu("about")
-
-        ##if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Помощь не необходима и не относится к мобильным устройствам.
-            ##textbutton _("Помощь") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
@@ -450,11 +393,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
         add gui.main_menu_background
     else:
         add gui.game_menu_background
-
-    #imagemap:
-        #ground "gui/game_menu.png"
-        #idle "gui/game_menu.png"
-        #hover "gui/game_menu_light.png"
 
     frame:
         style "game_menu_outer_frame"
@@ -572,14 +510,6 @@ screen about():
 
     tag menu
 
-    #imagemap:
-        #ground "gui/nvl.png"
-        #idle "gui/nvl.png"
-
-        #hotspot(46, 39, 110, 105):
-            #imagebutton:
-                #idle "gui/button/back_button.png"
-                #action Return()
         
     ## Этот оператор включает игровое меню внутрь этого экрана. Дочерний vbox
     ## включён в порт просмотра внутри экрана игрового меню.
@@ -601,11 +531,6 @@ screen about():
                 xalign 0.99
                 yalign 0.99
                 color '#09e6b6'
-
-            ## gui.about обычно установлено в options.rpy.
-            #if gui.about:
-                #text "[gui.about!t]\n"
-
 
 
 style about_label is gui_label
@@ -730,80 +655,6 @@ screen file_slots(title):
                 action FileDelete("3")
             hotspot(825, 607, 60, 52):
                 action FileDelete("4")
-
-    #default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
-
-    #use game_menu(title):
-
-        #fixed:
-
-            ## Это гарантирует, что ввод будет принимать enter перед остальными
-            ## кнопками.
-            #order_reverse True
-
-            ## Номер страницы, который может быть изменён посредством клика на
-            ## кнопку.
-        # button:
-                #style "page_label"
-
-                #key_events True
-                #xalign 0.5
-                #action page_name_value.Toggle()
-
-                #input:
-                    #style "page_label_text"
-                    #value page_name_value
-
-            ## Таблица слотов.
-            #grid gui.file_slot_cols gui.file_slot_rows:
-                #style_prefix "slot"
-
-                #xalign 0.5
-                #yalign 0.5
-
-                #spacing gui.slot_spacing
-
-                #for i in range(gui.file_slot_cols * gui.file_slot_rows):
-
-                    #$ slot = i + 1
-
-                    #button:
-                        #action FileAction(slot)
-
-                        #has vbox
-
-                        #add FileScreenshot(slot) xalign 0.5
-
-                        #text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("Пустой слот")):
-                            #style "slot_time_text"
-
-                    #text FileSaveName(slot):
-                            #style "slot_name_text"
-
-                        #key "save_delete" action FileDelete(slot)
-
-            ## Кнопки для доступа к другим страницам.
-            #hbox:
-                #style_prefix "page"
-
-                #xalign 0.5
-                #yalign 1.0
-
-                #spacing gui.page_spacing
-
-            #textbutton _("<") action FilePagePrevious()
-
-                #if config.has_autosave:
-                    #textbutton _("{#auto_page}А") action FilePage("auto")
-
-                #if config.has_quicksave:
-                    #textbutton _("{#quick_page}Б") action FilePage("quick")
-
-                ## range(1, 10) задаёт диапазон значений от 1 до 9.
-                #for page in range(1, 10):
-                    #textbutton "[page]" action FilePage(page)
-
-                #textbutton _(">") action FilePageNext()
 
 
 style page_label is gui_label
@@ -937,72 +788,6 @@ screen preferences():
         if main_menu:
             hotspot(1154, 13, 103, 92):
                 action ShowMenu("about")
-
-    #use game_menu(_("Настройки"), scroll="viewport"):
-
-        #vbox:
-
-        # hbox:
-            # box_wrap True
-
-                #if renpy.variant("pc") or renpy.variant("web"):
-
-                # vbox:
-                #     style_prefix "radio"
-                    # label _("Режим экрана")
-                    # textbutton _("Оконный") action Preference("display", "window")
-                        #textbutton _("Полный") action Preference("display", "fullscreen")
-
-            # vbox:
-                # style_prefix "check"
-                # label _("Пропуск")
-                # textbutton _("Всего текста") action Preference("skip", "toggle")
-                # textbutton _("После выборов") action Preference("after choices", "toggle")
-                # textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
-                ## могут быть добавлены сюда для добавления новых настроек.
-
-        # null height (4 * gui.pref_spacing)
-
-        # hbox:
-            # style_prefix "slider"
-            # box_wrap True
-
-                #vbox:
-
-                    ##label _("Скорость текста")
-
-                    ##bar value Preference("text speed")
-
-                    #label _("Скорость авточтения")
-
-                    #bar value Preference("auto-forward time")
-
-            # vbox:
-
-                # if config.has_music:
-                    # label _("Громкость музыки")
-
-                    # hbox:
-                    #     bar value Preference("music volume")
-
-                    #if config.has_sound:
-
-                    # label _("Громкость звуков")
-
-                    # hbox:
-                        #  bar value Preference("sound volume")
-                          
-                        # if config.sample_sound:
-                        #     textbutton _("Тест") action Play("sound", config.sample_sound)
-
-                # if config.has_music or config.has_sound or config.has_voice:
-                    # null height gui.pref_spacing
-
-                    # textbutton _("Без звука"):
-                        #    action Preference("all mute", "toggle")
-                        #   style "mute_all_button"
 
 
 style pref_label is gui_label

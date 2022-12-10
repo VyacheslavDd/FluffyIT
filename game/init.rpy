@@ -52,6 +52,15 @@ screen title_screen():
             italic True
             size 30
 
+screen remained_answers():
+    frame:
+        xalign 0.0
+        yalign 0.0
+        background None
+        text "Осталось правильных ответов: [correct_variants]":
+            size 30
+            color "#1149d9"
+
 screen choose_character():
     use title_screen()
     use character(0, "boy_neutral", "boy_happy", "boy")

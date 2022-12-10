@@ -21,6 +21,7 @@ label third_task:
                 ["Сократить время ответа сервера", "award 40"],
                 ["Применить поэтапную загрузку контента", "award 50"]
                 ]
+    show screen remained_answers()
     jump start_guessing
     return
 
@@ -50,6 +51,7 @@ label award_character(ind):
         masya "Стало намного лучше!"
         $correct_variants -= 1
         if correct_variants == 0:
+            hide screen remained_answers
             jump continue_third_task
         else:
             python:
