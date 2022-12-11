@@ -19,7 +19,7 @@ label second_task:
     restaurant_cat "Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза."
     restaurant_cat "Надеюсь вы сумеете исправить это. Жду вашей работы."
     masya "Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт."
-    show screen show_image(1280, 720, 0, 0, "kitchen")
+    show screen show_image(1280, 720, 0, 0, "broken_menu")
     call hide_dialog_second from _call_hide_dialog_second
     main_character "Хм... Я не вижу ни слова про доставку на этом сайте."
     masya "Я тоже ничего не могу найти... Займешься этим, пока я доделываю свои старые работы?"
@@ -80,11 +80,12 @@ label finish_masya_task:
     show sad at front_transform
     main_character "Видимо у меня изначально не было выбора..."
     hide sad
-    show screen show_image(1280, 720, 0, 0, "kitchen")
     jump start_work
     return
 
 label start_work:
+    show neutral at front_transform
+    hide screen show_image
     main_character "Хм, с какого бы раздела сайта начать?"
     menu:
         "{size=30}Хм, с какого бы раздела сайта начать?{/size}"
@@ -184,10 +185,12 @@ label found_site:
     return
 
 label after_choosing:
+    hide neutral
+    show emwhat at front_transform
     main_character "Ну, вроде бы товар [variations[15]], а где же корзина?..."
     main_character "Как мне оплатить товар? Видимо от доставки тут только ее упоминание..."
     main_character "Надо сказать об этом Масе."
-    hide screen show_image
+    hide emwhat
     show neutral at front_transform
     main_character "Мася, мне кажется, тут в принципе нет доставки, с этим нужно что-то сделать."
     show neutral at left_transform with move
@@ -195,7 +198,7 @@ label after_choosing:
     masya "Будет готово! Ты огромный молодец, задание выполнено на отлично!"
     hide neutral with moveoutleft
     hide happy_cat with moveoutright
-    show screen show_image(1280, 720, 0, 0, "kitchen") with very_slow_dissolve
+    show screen show_image(1280, 720, 0, 0, "repaired_menu") with very_slow_dissolve
     masya "Красота..."
     hide screen show_image
     show screen second_customer_talk

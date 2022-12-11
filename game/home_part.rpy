@@ -153,10 +153,9 @@ label play_phone(picture):
 
 label playing_phone:
     hide screen phone_screen
-    show screen show_image(1280, 720, 0, 0, "nighthall")
+    show screen show_image(1280, 720, 0, 0, "phone_play")
     window show
-    "*Играет*"
-    main_character "Ой, что-то я засыпаю..."
+    main_character "Выглядит шикарно, но, кажется, меня тянет в сон..."
     window hide
     hide screen show_image with slowdissolve
     scene black with very_slow_dissolve

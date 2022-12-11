@@ -59,7 +59,7 @@ screen remained_answers():
         background None
         text "Осталось правильных ответов: [correct_variants]":
             size 30
-            color "#1149d9"
+            color "#326017"
 
 screen choose_character():
     use title_screen()
@@ -137,10 +137,10 @@ screen third_customer_talk():
 
 screen phone_screen():
     imagemap:
-        ground "images/scenes/hall.png"
-        idle "images/scenes/hall.png"
-        hover "images/scenes/hall.png"
-        hotspot(0, 0, 1280, 720):
+        ground "images/scenes/phone_main.png"
+        idle "images/scenes/phone_main.png"
+        hover "images/scenes/phone_main.png"
+        hotspot(550, 327, 71, 71):
             action Jump("playing_phone")
 
 
