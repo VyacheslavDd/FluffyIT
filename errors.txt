@@ -2,12 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/ask_answer_part.rpy", line 5: expected statement.
-    questions = [["Спросить про направления в университете 0", "ask_directions"],
-              ^
-                    ["Спросить про баллы для поступления 1", "ask_scores"],
-                    ["Спросить, чем привлекла профессия 2", "ask_attraction"],
-                    ["Приступить к работе 3", "get_to_work"]]
+File "game/fourth_task.rpy", line 129: expected statement.
+    masya t_answer
+                  ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Sat Dec 10 21:35:48 2022
+Wed Dec 14 01:26:41 2022

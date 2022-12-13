@@ -52,6 +52,49 @@ screen title_screen():
             italic True
             size 30
 
+screen virus1(is_interaction):
+    use virus("virus1", is_interaction, 150, 10)
+
+screen virus2(is_interaction):
+    use virus("virus2", is_interaction, 550, 280)
+
+screen virus3(is_interaction):
+    use virus("virus3", is_interaction, 900, 550)
+
+screen virus4(is_interaction):
+    use virus("virus4", is_interaction, 0, 400)
+
+screen virus5(is_interaction):
+    use virus("virus5", is_interaction, 950, 100)
+
+screen virus(parent_name, is_interaction, x_align, y_align):
+    default n = 5
+    frame:
+        xpos x_align
+        ypos y_align
+        background None
+
+        imagebutton:
+            idle "sized_virus"
+            if is_interaction:
+                if n - 1 == 0:
+                    action [Hide(parent_name), SetVariable("killed", killed + 1), Show("dead_virus", None, x_align, y_align)]
+                if n - 1 > 0:
+                    action [SetLocalVariable("n", n - 1), Notify("Вот так!")]
+            else:
+                action None
+
+screen dead_virus(x_align, y_align):
+    if killed == 5:
+        timer 1.0 action [Hide(), Jump("continue_after_cleaning")]
+    else:
+        timer 1.0 action Hide()
+    frame:
+        xpos x_align
+        ypos y_align
+        background None
+        add "images/virus/virusdead_sized.png"
+
 screen remained_answers():
     frame:
         xalign 0.0
@@ -135,6 +178,10 @@ screen third_customer_talk():
     use viewport_ex(0, 0, "one", "laboratory")
     use viewport_ex(640, 0, "two", "class")
 
+screen last_customer_talk():
+    use viewport_ex(0, 0, "one", "nighthall")
+    use viewport_ex(640, 0, "two", "class")
+
 screen phone_screen():
     imagemap:
         ground "images/scenes/phone_main.png"
@@ -180,6 +227,10 @@ transform very_left_transform:
     xalign 0.05
     yalign 0.4
 
+transform touching_left_transform:
+    xalign 0
+    yalign 0.4
+
 transform very_right_transform:
     xalign 0.95
     yalign 0.4
@@ -197,14 +248,15 @@ define masya_nvl = Character(None, color="#8e450c", kind=nvl)
 define kindegarten_cat = Character("Садовод", color="#149e09")
 define restaurant_cat = Character("Ресторатор", color="#ec043d")
 define science_cat = Character("Учёный", color="#4f3fe2")
+define anonymous_cat = Character("Аноним", color="#4b5457")
 define mood_level = 5
 define skill_level = 2
 define bar_part = "yellow_left"
 define is_boy = True
 define bv = ["определился", "сынок", "Такой", "большой стал", "стал", "нервным", "сделал", "попал", "такой", "пришёл", "новенький", "оказался", "видел", "сделал", "нашёл",
-"выбрал"]
+"выбрал", "Уверен"]
 define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела", "сделала", "нашла",
-"выбрала"]
+"выбрала", "Уверена"]
 
 
 image neutral = "[img_prefix]_neutral"
@@ -213,6 +265,7 @@ image cat_boss = "boss"
 image cat_restaurant = "restaurant"
 image cat_secretary = "secretary"
 image cat_science = "scientist"
+image cat_anon = "anon_cat"
 image angry = "[img_prefix]_angry"
 image emwhat = "[img_prefix]_emwhat"
 image happy = "[img_prefix]_happy"

@@ -89,5 +89,11 @@ label continue_third_task:
     nvl hide dissolve
     hide cat_secretary
     show happy at front_transform
-    "ok"
+    main_character "[variations[16]], что мне пригодятся эти знания!"
+    show happy at left_transform with move
+    show cat_happy at right_transform with moveinright
+    masya "Мы столько всего сделали!  Думаю, следующий заказ будет последним на сегодня."
+    hide happy with moveoutleft
+    hide cat_happy with moveoutright
+    jump start_last_task
     return
