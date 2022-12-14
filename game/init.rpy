@@ -22,22 +22,27 @@ init python:
         return variants
 
 
-screen screen_before_menu():
+screen the_ending(ending_description):
     frame:
         xsize 1280
         ysize 720
         add Solid("#000000", xsize=1280, ysize=720)
         background None
-        text "ПУШИСТЫЕ IT":
-            color "#ed15b3"
+        text "Конец.":
+            color "#0fb8db"
             size 60
             xalign 0.5
             yalign 0.5
-        text 'Команда "Бебрики"':
+        text '"ПУШИСТЫЕ IT"':
             color "#ede115"
             size 50
             xalign 0.5
             yalign 0.1
+        text "[ending_description]":
+            color "#b5c9cd"
+            size 35
+            xalign 0.5
+            yalign 0.8
 
 
 screen title_screen():
@@ -46,6 +51,7 @@ screen title_screen():
         yalign 0.3
         background None
         text "{b}Выберите пол главного героя{/b}:":
+            color "#2211cf"
             slow_cps 20
             underline True
             bold True
@@ -78,9 +84,9 @@ screen virus(parent_name, is_interaction, x_align, y_align):
             idle "sized_virus"
             if is_interaction:
                 if n - 1 == 0:
-                    action [Hide(parent_name), SetVariable("killed", killed + 1), Show("dead_virus", None, x_align, y_align)]
+                    action [Hide(parent_name), SetVariable("killed", killed + 1), Show("dead_virus", None, x_align, y_align), Notify("Ликвидирован!")]
                 if n - 1 > 0:
-                    action [SetLocalVariable("n", n - 1), Notify("Вот так!")]
+                    action [SetLocalVariable("n", n - 1), Notify("Осталось нанести {0} {1}!".format(n - 1, "удара" if n - 1 != 1 else "удар"))]
             else:
                 action None
 
@@ -102,7 +108,7 @@ screen remained_answers():
         background None
         text "Осталось правильных ответов: [correct_variants]":
             size 30
-            color "#326017"
+            color "#10ceec"
 
 screen choose_character():
     use title_screen()
@@ -254,9 +260,9 @@ define skill_level = 2
 define bar_part = "yellow_left"
 define is_boy = True
 define bv = ["определился", "сынок", "Такой", "большой стал", "стал", "нервным", "сделал", "попал", "такой", "пришёл", "новенький", "оказался", "видел", "сделал", "нашёл",
-"выбрал", "Уверен"]
+"выбрал", "Уверен", "помог", "понял"]
 define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела", "сделала", "нашла",
-"выбрала", "Уверена"]
+"выбрала", "Уверена", "помогла", "поняла"]
 
 
 image neutral = "[img_prefix]_neutral"

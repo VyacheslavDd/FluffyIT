@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/fourth_task.rpy", line 129: expected statement.
-    masya t_answer
-                  ^
+File "game/finish.rpy", line 74: expected ':' not found.
+    else if result_level > 15:
+         ^
+
+File "game/finish.rpy", line 78: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Wed Dec 14 01:26:41 2022
+Wed Dec 14 15:05:06 2022

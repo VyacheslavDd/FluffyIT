@@ -6,7 +6,7 @@ label start_last_task:
     show cat_anon onlayer screens at touching_left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
     anonymous_cat "Просто сделайте мне хороший сайт. На этом все."
-    masya "Мася: К вечеру будет готово! Положитесь на нас."
+    masya "К вечеру будет готово! Положитесь на нас."
     anonymous_cat "...."
     hide happy_cat onlayer screens
     show what_cat onlayer screens at right_transform
