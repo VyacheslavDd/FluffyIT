@@ -245,7 +245,25 @@ style choice_button_text is default:
 ## внеигровым меню.
 
 screen quick_menu():
-    pass
+
+    ## Ensure this appears on top of other screens.
+    zorder 100
+
+    if quick_menu:
+
+        hbox:
+            style_prefix "quick"
+
+            xalign 0.5
+            yalign 1.0
+
+            textbutton _("Назад") action Rollback()
+            textbutton _("История") action ShowMenu('history')
+            textbutton _("Пропустить") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Меню") action ShowMenu('simple_game_menu')
+            textbutton _("Сохранить") action ShowMenu('save')
+            textbutton _("Загрузить") action ShowMenu('load')
+            textbutton _("Настройки") action ShowMenu('preferences')
 
 init python:
     config.overlay_screens.append("quick_menu")
@@ -259,7 +277,10 @@ style quick_button:
     properties gui.button_properties("quick_button")
 
 style quick_button_text:
-    properties gui.button_text_properties("quick_button")
+    color "#3b3e03"
+    hover_color "#634a05"
+    size 15
+    #properties gui.button_text_properties("quick_button")
 
 
 ################################################################################

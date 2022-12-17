@@ -51,9 +51,8 @@ screen title_screen():
         yalign 0.3
         background None
         text "{b}Выберите пол главного героя{/b}:":
-            color "#2211cf"
+            color "#3b3e03"
             slow_cps 20
-            underline True
             bold True
             italic True
             size 30
@@ -161,14 +160,8 @@ screen viewport_ex(x_pos, y_pos, _id, scene_pic_name):
             add "images/scenes/[scene_pic_name].png"
 
 
-screen show_image(x_size, y_size, x_pos, y_pos, scene_pic_name):
-    frame:
-        xpos x_pos
-        ypos y_pos
-        xsize x_size
-        ysize y_size
-        add "images/scenes/[scene_pic_name].png"
-        background None
+screen show_image(scene_pic_name):
+    add "images/scenes/[scene_pic_name].png"
 
 
 screen first_customer_talk():
@@ -260,9 +253,9 @@ define skill_level = 2
 define bar_part = "yellow_left"
 define is_boy = True
 define bv = ["определился", "сынок", "Такой", "большой стал", "стал", "нервным", "сделал", "попал", "такой", "пришёл", "новенький", "оказался", "видел", "сделал", "нашёл",
-"выбрал", "Уверен", "помог", "понял"]
+"выбрал", "Уверен", "помог", "понял", "огромный"]
 define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела", "сделала", "нашла",
-"выбрала", "Уверена", "помогла", "поняла"]
+"выбрала", "Уверена", "помогла", "поняла", "огромная"]
 
 
 image neutral = "[img_prefix]_neutral"

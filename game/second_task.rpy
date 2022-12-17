@@ -19,13 +19,13 @@ label second_task:
     restaurant_cat "Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза."
     restaurant_cat "Надеюсь вы сумеете исправить это. Жду вашей работы."
     masya "Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт."
-    show screen show_image(1280, 720, 0, 0, "broken_menu")
+    show screen show_image("broken_menu")
     call hide_dialog_second from _call_hide_dialog_second
     main_character "Хм... Я не вижу ни слова про доставку на этом сайте."
     masya "Я тоже ничего не могу найти... Займешься этим, пока я доделываю свои старые работы?"
     
     menu:
-        "{size=30}И что же мне ответить?{/size}"
+        "\"{size=30}И что же мне ответить?{/size}\""
         "Конечно, я с радостью помогу тебе!":
             jump do_help
         "Ой... Как-то мне лень...":
@@ -58,7 +58,7 @@ label think_twice:
     masya "Хм, подумай хорошо. Дорабатывать сайты, созданные с нуля, довольно непростая работа."
 
     menu:
-        "И всё же, чем я займусь..."
+        "\"{size=30}И всё же, чем я займусь...{/size}\""
         "Найти доставку на сайте заказчика.":
             jump start_work
         "Доделать работы Маси":
@@ -88,7 +88,7 @@ label start_work:
     hide screen show_image
     main_character "Хм, с какого бы раздела сайта начать?"
     menu:
-        "{size=30}Хм, с какого бы раздела сайта начать?{/size}"
+        "\"{size=30}Хм, с какого бы раздела сайта начать?{/size}\""
         "Наши адреса":
             call afraid_that_nothing from _call_afraid_that_nothing
         "Отзывы":
@@ -107,7 +107,7 @@ label afraid_that_nothing(previous_label=None):
         jump start_work
     else:
         menu:
-            "{size=30}А теперь что?{/size}"
+            "\"{size=30}А теперь что?{/size}\""
             "Вернуться к главному меню":
                 jump start_work
             "Вернуться к подразделам":
@@ -117,7 +117,7 @@ label afraid_that_nothing(previous_label=None):
 label contacts:
     $jump_to = "contacts"
     menu:
-        "{size=30}Какой раздел?{/size}"
+        "\"{size=30}Какой раздел?{/size}\""
         "Наш персонал":
             call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_2
         "Наши соцсети":
@@ -129,7 +129,7 @@ label contacts:
 label rest_menu:
     $jump_to = "rest_menu"
     menu:
-        "{size=30}Какой раздел?{/size}"
+        "\"{size=30}Какой раздел?{/size}\""
         "Горячее":
             call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_5
         "Десерты":
@@ -145,7 +145,7 @@ label rest_menu:
 label discounts:
     $jump_to = "discounts"
     menu:
-        "{size=30}Какой раздел?{/size}"
+        "\"{size=30}Какой раздел?{/size}\""
         "Для именинников":
             call afraid_that_nothing(jump_to) from _call_afraid_that_nothing_10
         "Комбо-наборы":
@@ -158,7 +158,7 @@ label discounts:
 
 label working_rest_menu:
     menu:
-        "{size=30}Что попробую заказать?{/size}"
+        "\"{size=30}Что попробую заказать?{/size}\""
         "Горячее":
             call what_chosen("Фаршированный овощами цыпленок\n590р") from _call_what_chosen
         "Десерты":
@@ -195,10 +195,10 @@ label after_choosing:
     main_character "Мася, мне кажется, тут в принципе нет доставки, с этим нужно что-то сделать."
     show neutral at left_transform with move
     show happy_cat at right_transform with moveinright
-    masya "Будет готово! Ты огромный молодец, задание выполнено на отлично!"
+    masya "Будет готово! Ты [variations[19]] молодец, задание выполнено на отлично!"
     hide neutral with moveoutleft
     hide happy_cat with moveoutright
-    show screen show_image(1280, 720, 0, 0, "repaired_menu") with very_slow_dissolve
+    show screen show_image("repaired_menu") with very_slow_dissolve
     masya "Красота..."
     hide screen show_image
     show screen second_customer_talk
@@ -231,7 +231,7 @@ label after_choosing:
     show neutral at front_transform
 
     menu:
-        "{size=30}Пора задуматься...{/size}"
+        "\"{size=30}Пора задуматься...{/size}\""
         "Думаю, что да. Меня действительно заинтересовала наша с тобой работа.":
             call answer_if_interesting(True, 1, "Это прелестно. Я рад, что смог привить тебе любовь к своей профессии.") from _call_answer_if_interesting
         "Честно говоря, я делаю это все только потому, что у меня нет другого выбора.":

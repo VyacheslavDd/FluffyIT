@@ -24,7 +24,7 @@ label get_to_work:
     hide serious_cat onlayer screens
     hide cat_kindegarten onlayer screens
     hide screen first_customer_talk
-    show screen show_image(1280, 720, 0, 0, "broken_flowers")
+    show screen show_image("broken_flowers")
     masya "Та-а-ак...."
     masya "Такая проблема... Создать сайт на свой вкус я могу без проблем, у меня есть и знания, и навыки! Но понять, что не так уже с готовым сайтом для меня сложно."
     hide screen show_image
@@ -35,7 +35,7 @@ label get_to_work:
 
 label problem_menu:
     menu:
-        "{size=30}В чём же проблема?{/size}"
+        "\"{size=30}В чём же проблема?{/size}\""
         "Список товаров расположен не в алфавитном порядке!":
             jump neutral_choice
         "Не хватает фотографий товаров!":
@@ -74,12 +74,12 @@ label right_choice:
     show happy_cat at front_transform with slowdissolve
     masya "Точно! Я бы никогда не догадался без твоей помощи! Сейчас мы это исправим."
     hide happy_cat with moveoutright
-    show screen show_image(1280, 720, 0, 0, "broken_flowers") with slowdissolve
+    show screen show_image("broken_flowers") with slowdissolve
     "...да, сейчас мы кое-что добавим..."
     "...вам точно подходят такие варианты?"
     "..."
     hide screen show_image
-    show screen show_image(1280, 720, 0, 0, "flowers_cool")
+    show screen show_image("flowers_cool")
     masya "Мы все исправили! Ждем вашей оценки."
     hide screen show_image
     show screen first_customer_talk

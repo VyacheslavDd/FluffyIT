@@ -8,7 +8,7 @@ label third_task:
     science_cat "Привет! Я начинающий ученый, и мы с моими коллегами решили вести сайт, на котором будем публиковать интересные научные статьи и наши открытия."
     science_cat "Но наш сайт просто-напросто не открывается! Помогите нам. Ссылку уже отправил."
     masya "Отлично! Сейчас разберемся."
-    show screen show_image(1280, 720, 0, 0, "loading_site")
+    show screen show_image("loading_site")
     hide cat_science onlayer screens
     hide happy_cat onlayer screens
     hide screen third_customer_talk
@@ -63,7 +63,7 @@ label continue_third_task:
     hide neutral_cat
     masya "Так-то лучше..."
     hide screen show_image
-    show screen show_image(1280, 720, 0, 0, "articles")
+    show screen show_image("articles")
     masya "Вот, как работает сайт сейчас!"
     hide screen show_image
     show screen third_customer_talk

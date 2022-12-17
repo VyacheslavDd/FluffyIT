@@ -42,10 +42,10 @@ label finish_game:
 
     menu:
         "Пожалуйста.":
-            call change_mood(-1, False) from _call_change_mood_15
+            call change_mood(-1, False)
             jump ending
         "Очень радостно было познакомиться с тобой! [variations[16]], что все полученные мною знания пригодятся мне в жизни.":
-            call change_mood(1, True) from _call_change_mood_16
+            call change_mood(1, True)
             jump ending
 
     return

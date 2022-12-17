@@ -54,7 +54,7 @@ label start_story:
     mum "О, [variations[1]]! [variations[2]] ты у меня [variations[3]]! Совсем скоро студенческая жизнь. Ты уже [variations[0]], кем хочешь стать?"
 
     menu:
-        "{size=30}Что бы сказать...{/size}"
+        "\"{size=30}Что бы сказать...{/size}\""
 
         "Нагрубить":
             call change_mood(-1, False) from _call_change_mood_5
@@ -100,7 +100,7 @@ label mum_choice(isrude, fphrase, final_phrase):
 
 label room_choice(picture):
     menu:
-        "{size=30}Чем бы теперь заняться...{/size}"
+        "\"{size=30}Чем бы теперь заняться...{/size}\""
 
         "Поспать":
             call sleep_or_watch(picture, very_slow_dissolve, "Спустя час...") from _call_sleep
@@ -153,7 +153,7 @@ label play_phone(picture):
 
 label playing_phone:
     hide screen phone_screen
-    show screen show_image(1280, 720, 0, 0, "phone_play")
+    show screen show_image("phone_play")
     window show
     main_character "Выглядит шикарно, но, кажется, меня тянет в сон..."
     window hide
