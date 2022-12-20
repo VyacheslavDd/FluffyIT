@@ -8,14 +8,17 @@ label finish_game:
     show cat_anon onlayer screens at touching_left_transform with slowdissolve
     show happy onlayer screens at right_transform
     hide neutral onlayer screens
-    main_character "Мы постарались сделать для Вас хороший шаблон, так как из-за вирусов ваш предыдущий сайт был полностью утерян."
+    play sound t5
+    main_character "{cps=30}Мы постарались сделать для Вас хороший шаблон, так как из-за вирусов ваш предыдущий сайт был полностью утерян.{/cps}"
     show cat_boss onlayer screens at touching_left_transform with slowdissolve
-    hide cat_anon onlayer screens with hpunch
-    boss_cat "Поздравляю Вас, ребята!"
+    hide cat_anon onlayer screens
+    play sound t6
+    boss_cat "{cps=20}Поздравляю Вас, ребята!{/cps}"
     hide happy onlayer screens
     show oh_my_gosh onlayer screens at right_transform
     show cat_what onlayer screens at very_right_transform behind oh_my_gosh
-    boss_cat "Вы отлично прошли мою проверку!"
+    play sound t6
+    boss_cat "{cps=24}Вы отлично прошли мою проверку!{/cps}"
     hide screen last_customer_talk
     hide cat_boss onlayer screens
     show oh_my_gosh at right_transform
@@ -54,8 +57,8 @@ label ending:
     window hide
     hide happy
     hide cat_happy
+    play sound punch_door
     scene black with vpunch
-    "*Тук-тук-тук*"
     show room with very_slow_dissolve
     show emwhat at front_transform with very_slow_dissolve
     window show

@@ -15,10 +15,14 @@ label second_task:
     call show_customer("gui/nvl.png", "Котик-Ресторатор", "#ec043d") from _call_show_customer_1
     hide restaurant_f
     call show_dialog_second from _call_show_dialog_second
-    restaurant_cat "Доброго времени суток! Я очень занята, нету времени все подробно описывать."
-    restaurant_cat "Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза."
-    restaurant_cat "Надеюсь вы сумеете исправить это. Жду вашей работы."
-    masya "Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт."
+    play sound t1
+    restaurant_cat "{cps=60}Доброго времени суток! Я очень занята, нету времени все подробно описывать.{/cps}"
+    play sound t1
+    restaurant_cat "{cps=71}Скажем так, мы специально сделали сайт, чтобы клиенты могли пользоваться доставкой, но за два месяца ее заказали всего 3 раза.{/cps}"
+    play sound t1
+    restaurant_cat "{cps=45}Надеюсь вы сумеете исправить это. Жду вашей работы.{/cps}"
+    play sound t3
+    masya "{cps=19}Приветствую! Все будет сделано в лучшем виде. Ждем ссылку на ваш сайт.{/cps}"
     show screen show_image("broken_menu")
     call hide_dialog_second from _call_hide_dialog_second
     main_character "Хм... Я не вижу ни слова про доставку на этом сайте."
@@ -45,6 +49,7 @@ label do_help:
 
 label refuse_help:
     call change_skill(-1, False) from _call_change_skill_3
+    play sound bad_sound
     show serious_cat at front_transform with vpunch
     masya "Хэй, тут не место лентяям. Мы должны ответственно относиться к своей работе!"
     masya "Прости, но тебе все же придется сделать это."
@@ -204,8 +209,10 @@ label after_choosing:
     show screen second_customer_talk
     show cat_restaurant onlayer screens at left_transform
     show happy onlayer screens at right_transform
-    restaurant_cat "Благодарю вас! Заказов стало гораздо больше. Я порекомендую вас своим знакомым."
-    main_character "Всегда рады помочь! Тем более за такую хорошую рекламу."
+    play sound t1
+    restaurant_cat "{cps=60}Благодарю вас! Заказов стало гораздо больше. Я порекомендую вас своим знакомым.{/cps}"
+    play sound t3
+    main_character "{cps=15}Всегда рады помочь! Тем более за такую хорошую рекламу.{/cps}"
     hide cat_restaurant onlayer screens with slowdissolve
     hide happy onlayer screens with slowdissolve
     hide screen second_customer_talk with slowdissolve

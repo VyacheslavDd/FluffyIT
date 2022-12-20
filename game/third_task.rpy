@@ -5,9 +5,12 @@ label third_task:
     show screen third_customer_talk
     show cat_science onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
-    science_cat "Привет! Я начинающий ученый, и мы с моими коллегами решили вести сайт, на котором будем публиковать интересные научные статьи и наши открытия."
-    science_cat "Но наш сайт просто-напросто не открывается! Помогите нам. Ссылку уже отправил."
-    masya "Отлично! Сейчас разберемся."
+    play sound t2
+    science_cat "{cps=35}Привет! Я начинающий ученый, и мы с моими коллегами решили вести сайт, на котором будем публиковать интересные научные статьи и наши открытия.{/cps}"
+    play sound t3
+    science_cat "{cps=18}Но наш сайт просто-напросто не открывается! Помогите нам. Ссылку уже отправил.{/cps}"
+    play sound t1
+    masya "{cps=20}Отлично! Сейчас разберемся.{/cps}"
     show screen show_image("loading_site")
     hide cat_science onlayer screens
     hide happy_cat onlayer screens
@@ -37,6 +40,7 @@ label start_guessing:
 
 label punish_character:
     call change_skill(-1, False) from _call_change_skill_6
+    play sound bad_sound
     show sad_cat with vpunch
     masya "Боюсь, это только ухудшит работу сайта"
     hide sad_cat
@@ -69,8 +73,10 @@ label continue_third_task:
     show screen third_customer_talk
     show cat_science onlayer screens at left_transform
     show happy onlayer screens at right_transform
-    science_cat "Спасибо! Видимо мы перестарались над оформлением сайта. Вы очень нас выручили."
-    main_character "Всегда рады Вам помочь!"
+    play sound t3
+    science_cat "{cps=20}Спасибо! Видимо мы перестарались над оформлением сайта. Вы очень нас выручили.{/cps}"
+    play sound t1
+    main_character "{cps=18}Всегда рады Вам помочь!{/cps}"
     hide cat_science onlayer screens with slowdissolve
     hide happy onlayer screens with slowdissolve
     hide screen third_customer_talk with slowdissolve

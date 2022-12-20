@@ -1,57 +1,37 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/second_task.rpy", line 169, in script call
-    call what_chosen('салат "Цезарь"\n300р') from _call_what_chosen_3
-  File "game/second_task.rpy", line 236, in script call
-    call answer_if_interesting(True, 1, "Это прелестно. Я рад, что смог привить тебе любовь к своей профессии.") from _call_answer_if_interesting
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 92, in script
-    main_character "[variations[16]], что мне пригодятся эти знания!"
-IndexError: list index out of range
+  File "game/init.rpy", line 1, in script
+    init python:
+  File "game/init.rpy", line 1, in script
+    init python:
+  File "game/init.rpy", line 2, in <module>
+    renpy.music.play("sounds/bg_music.mp3", fadeout=2.0, fadein=3.0)
+Exception: Can't play music during init phase.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/second_task.rpy", line 169, in script call
-    call what_chosen('салат "Цезарь"\n300р') from _call_what_chosen_3
-  File "game/second_task.rpy", line 236, in script call
-    call answer_if_interesting(True, 1, "Это прелестно. Я рад, что смог привить тебе любовь к своей профессии.") from _call_answer_if_interesting
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 35, in script call
-    call award_character(result[-2:]) from _call_award_character
-  File "game/third_task.rpy", line 92, in script
-    main_character "[variations[16]], что мне пригодятся эти знания!"
-  File "C:\renpy\renpy_inst\inner\renpy\ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\renpy\renpy_inst\inner\renpy\exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "C:\renpy\renpy_inst\inner\renpy\character.py", line 1253, in __call__
-    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
-  File "C:\renpy\renpy_inst\inner\renpy\character.py", line 1172, in prefix_suffix
-    return (sub(prefix) + sub(body) + sub(suffix))
-  File "C:\renpy\renpy_inst\inner\renpy\character.py", line 1152, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "C:\renpy\renpy_inst\inner\renpy\substitutions.py", line 278, in substitute
-    s = formatter.vformat(s, (), kwargs) # type: ignore
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 165, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 205, in _vformat
-  File "C:\renpy\renpy_inst\inner\renpy\substitutions.py", line 168, in get_field
-    obj, arg_used = super(Formatter, self).get_field(field_name, args, kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 278, in get_field
-  File "C:\renpy\renpy_inst\inner\renpy\revertable.py", line 217, in __getitem__
-    rv = list.__getitem__(self, index)
-IndexError: list index out of range
+  File "C:\renpy\renpy_inst\inner\renpy\bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "C:\renpy\renpy_inst\inner\renpy\main.py", line 558, in main
+    renpy.game.context().run(node)
+  File "game/init.rpy", line 1, in script
+    init python:
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 441, in raise_
+  File "game/init.rpy", line 1, in script
+    init python:
+  File "C:\renpy\renpy_inst\inner\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\renpy\renpy_inst\inner\renpy\python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/init.rpy", line 2, in <module>
+    renpy.music.play("sounds/bg_music.mp3", fadeout=2.0, fadein=3.0)
+  File "C:\renpy\renpy_inst\inner\renpy\audio\music.py", line 89, in play
+    raise Exception("Can't play music during init phase.")
+Exception: Can't play music during init phase.
 
 Windows-10-10.0.19044 AMD64
 Ren'Py 8.0.3.22090809
 Пушистые IT 0.0
-Wed Dec 14 15:58:26 2022
+Tue Dec 20 18:06:14 2022

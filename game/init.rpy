@@ -52,7 +52,7 @@ screen title_screen():
         background None
         text "{b}Выберите пол главного героя{/b}:":
             color "#3b3e03"
-            slow_cps 20
+            slow_cps 25
             bold True
             italic True
             size 30
@@ -178,7 +178,7 @@ screen third_customer_talk():
     use viewport_ex(640, 0, "two", "class")
 
 screen last_customer_talk():
-    use viewport_ex(0, 0, "one", "nighthall")
+    use viewport_ex(0, 0, "one", "Anon_bg")
     use viewport_ex(640, 0, "two", "class")
 
 screen phone_screen():
@@ -257,6 +257,15 @@ define bv = ["определился", "сынок", "Такой", "большо
 define gv = ["определилась", "дочка", "Такая", "большая стала", "стала", "нервной", "сделала", "попала", "такая", "пришла", "новенькая", "оказалась", "видела", "сделала", "нашла",
 "выбрала", "Уверена", "помогла", "поняла", "огромная"]
 
+define audio.bad_sound = "sounds/smh_bad.mp3"
+define audio.punch_door = "sounds/door_punch.mp3"
+define audio.t1 = "sounds/t1.mp3"
+define audio.t2 = "sounds/t2.mp3"
+define audio.t3 = "sounds/t3.mp3"
+define audio.t4 = "sounds/t4.mp3"
+define audio.t5 = "sounds/t5.mp3"
+define audio.t6 = "sounds/t6.mp3"
+define audio.info_type = "sounds/info_type.mp3"
 
 image neutral = "[img_prefix]_neutral"
 image cat_kindegarten = "kindegarten"
@@ -273,6 +282,7 @@ image wow = "[img_prefix]_wow"
 image oh_my_gosh = "[img_prefix]_omg"
 image sunny_street = "street"
 image lab = "lab_full"
+image anon_room = "anon_bg"
 image restaurant_f = "rest_full"
 image kinden_f = "kind_full"
 image pretty_kitchen = "kitchen"

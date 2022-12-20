@@ -1,5 +1,6 @@
 label start:
     show sunny_street with slowdissolve
+    play sound info_type
     show screen choose_character with slowdissolve
 
     python:
@@ -68,6 +69,7 @@ label start_story:
 label mum_choice(isrude, fphrase, final_phrase):
     hide mom
     if isrude:
+        play sound bad_sound
         show angry at front_transform with vpunch
         main_character "[fphrase]"
         hide angry

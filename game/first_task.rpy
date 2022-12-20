@@ -16,11 +16,14 @@ label get_to_work:
     show screen first_customer_talk
     show cat_kindegarten onlayer screens at left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
-    kindegarten_cat "{size=20}Здравствуйте! У меня свой маленький магазинчик с цветами и декоративными  растениями. Мой внук сказал, что в магазины давно никто не ходит, а все покупают в Интернете.{/size}"
-    kindegarten_cat "Поэтому я решил, что мне нужен сайт! Внучок помог мне его сделать, но еще ни один из покупателей не заказал товар... Пожалуйста, подскажите, что же не так?"
+    play sound t5
+    kindegarten_cat "{size=20}{cps=50}Здравствуйте! У меня свой маленький магазинчик с цветами и декоративными  растениями. Мой внук сказал, что в магазины давно никто не ходит, а все покупают в Интернете.{/cps}{/size}"
+    play sound t5
+    kindegarten_cat "{cps=46}Поэтому я решил, что мне нужен сайт! Внучок помог мне его сделать, но еще ни один из покупателей не заказал товар... Пожалуйста, подскажите, что же не так?{/cps}"
     show serious_cat onlayer screens at right_transform
     hide happy_cat onlayer screens
-    masya "Ну-ка, ну-ка... Давайте посмотрим на Ваш сайт."
+    play sound t1
+    masya "{cps=30}Ну-ка, ну-ка... Давайте посмотрим на Ваш сайт.{/cps}"
     hide serious_cat onlayer screens
     hide cat_kindegarten onlayer screens
     hide screen first_customer_talk
@@ -47,6 +50,7 @@ label problem_menu:
 label wrong_choice:
     call change_skill(-1, False) from _call_change_skill
     hide neutral
+    play sound bad_sound
     show serious_cat at front_transform with hpunch
     masya "Ты чего? У нашего заказчика очень много разных товаров! Я еще нигде не видел столько красивых растений!"
     hide serious_cat
@@ -75,19 +79,22 @@ label right_choice:
     masya "Точно! Я бы никогда не догадался без твоей помощи! Сейчас мы это исправим."
     hide happy_cat with moveoutright
     show screen show_image("broken_flowers") with slowdissolve
-    "...да, сейчас мы кое-что добавим..."
-    "...вам точно подходят такие варианты?"
+    "..."
+    main_character "Жду не дождусь, когда они придут к какому-нибудь результату!"
     "..."
     hide screen show_image
     show screen show_image("flowers_cool")
-    masya "Мы все исправили! Ждем вашей оценки."
+    play sound t1
+    masya "{cps=30}Мы все исправили! Ждем вашей оценки.{/cps}"
     hide screen show_image
     show screen first_customer_talk
     show cat_kindegarten onlayer screens at left_transform
     show happy onlayer screens at right_transform
     call change_mood(1, True) from _call_change_mood_4
-    kindegarten_cat "Просто прелестно! Как будто смотрю на свою прекрасную клумбу."
-    main_character "Мы очень рады, что Вам понравилось! Желаем хороших продаж. Обращайтесь к нам еще."
+    play sound t3
+    kindegarten_cat "{cps=15}Просто прелестно! Как будто смотрю на свою прекрасную клумбу.{/cps}"
+    play sound t3
+    main_character "{cps=19}Мы очень рады, что Вам понравилось! Желаем хороших продаж. Обращайтесь к нам еще.{/cps}"
     hide cat_kindegarten onlayer screens with slowdissolve
     hide happy onlayer screens with slowdissolve
     hide screen first_customer_talk with slowdissolve

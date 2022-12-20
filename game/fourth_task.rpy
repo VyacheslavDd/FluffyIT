@@ -1,12 +1,14 @@
 label start_last_task:
-    show sunny_street
+    show anon_room
     call show_customer("gui/nvl.png", "Котик-Аноним", "#18aae4") from _call_show_customer_3
-    hide sunny_street
+    hide anon_room
     show screen last_customer_talk
     show cat_anon onlayer screens at touching_left_transform with slowdissolve
     show happy_cat onlayer screens at right_transform with slowdissolve
-    anonymous_cat "Просто сделайте мне хороший сайт. На этом все."
-    masya "К вечеру будет готово! Положитесь на нас."
+    play sound t1
+    anonymous_cat "{cps=34}Просто сделайте мне хороший сайт. На этом все.{/cps}"
+    play sound t3
+    masya "{cps=12}К вечеру будет готово! Положитесь на нас.{/cps}"
     anonymous_cat "...."
     hide happy_cat onlayer screens
     show what_cat onlayer screens at right_transform
@@ -19,9 +21,10 @@ label start_last_task:
     hide what_cat
     show happy_cat at right_transform
     masya "Ну что ж, это не наше дело. Давай приступим к работе."
-    show screen show_image("loading_site")
+    show screen show_image("emptyWeb")
     call show_viruses(False) from _call_show_viruses
     hide happy_cat
+    play sound bad_sound
     hide emwhat with vpunch
     main_character "О нет, это же вирусы!!"
     masya "С таким мы еще не сталкивались... Но ничего страшного, нам любая работа под силу! Попробуем справиться с ними, как настоящие уважающие себя программисты."
